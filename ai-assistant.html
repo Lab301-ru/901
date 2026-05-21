@@ -121,21 +121,6 @@
   .tl-tags { display:flex; gap:8px; flex-wrap:wrap; }
   .tl-tags span { font-family:var(--font-m); font-size:11px; letter-spacing:.05em; padding:4px 10px; border:1px solid var(--rule); border-radius:999px; color:var(--ink-2); }
 
-  /* CTA-ряд с тремя кнопками */
-  .cta-ai {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-  }
-  .cta-ai .btn-primary {
-    grid-column: 1 / -1;
-    width: 100%;
-  }
-  .cta-ai a { justify-content: center; width: 100%; }
-  @media (max-width: 720px) {
-    body { overflow-x: hidden; }
-  }
-
   .sys-card-light {
     background: #ffffff;
     border-color: #d8d8d8;
@@ -159,9 +144,8 @@
       </div>
       <aside class="meta reveal">
         <p class="lede">AI‑ассистент, который <b>отвечает 24/7</b>, квалифицирует лиды, заводит карточки в&nbsp;CRM и&nbsp;закрывает <b>30–60% входящих</b> без участия оператора.</p>
-        <div class="cta-row cta-ai">
+        <div class="cta-row">
           <a class="btn-primary" href="thankyou.html?to=https://t.me/Judgeopenclawbot">Протестировать Михалыча <span>→</span></a>
-          <a class="btn-secondary" href="https://mihalich-ai.ru" target="_blank" rel="noopener">Смотреть продукт <span>↗</span></a>
           <a class="btn-secondary" href="#how">Как работает</a>
         </div>
       </aside>
