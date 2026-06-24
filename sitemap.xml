@@ -48,4 +48,17 @@
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
+  <!-- NEWS:START -->
+  <url>
+    <loc>https://lab301.ru/news.html</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://lab301.ru/news/zapustili-razdel-novostey.html</loc>
+    <lastmod>2026-06-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <!-- NEWS:END -->
 </urlset>

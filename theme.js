@@ -45,7 +45,7 @@
   const lang = root.getAttribute('lang') === 'en' ? 'en' : 'ru';
   const T = {
     ru: {
-      home:'Главная', services:'Услуги', sites:'Сайты', ai:'AI-Ассистент', process:'Процесс', cases:'Архив', faq:'FAQ', contacts:'Контакты',
+      home:'Главная', services:'Услуги', sites:'Сайты', ai:'AI-Ассистент', process:'Процесс', cases:'Архив', news:'Новости', faq:'FAQ', contacts:'Контакты',
       live:'LAB301 / OPERATIONS LIVE', sys:'SYS · STABLE', uptime:'UPTIME · 99.98%', queue:'QUEUE · 03', tz:'MSK GMT+3',
       cta:'Заказать сайт', menuOpen:'Открыть меню', backHome:'LAB301 — на главную',
       fBrand:'LAB301 / OPS', fAbout:'Лаборатория, которая собирает сайты, AI‑агентов и&nbsp;автоматизации для роста&nbsp;бизнеса.',
@@ -59,7 +59,7 @@
       dLang:'Язык', dA11y:'Режим доступности'
     },
     en: {
-      home:'Home', services:'Services', sites:'Sites', ai:'AI Assistant', process:'Process', cases:'Archive', faq:'FAQ', contacts:'Contacts',
+      home:'Home', services:'Services', sites:'Sites', ai:'AI Assistant', process:'Process', cases:'Archive', news:'News', faq:'FAQ', contacts:'Contacts',
       live:'LAB301 / OPERATIONS LIVE', sys:'SYS · STABLE', uptime:'UPTIME · 99.98%', queue:'QUEUE · 03', tz:'MSK GMT+3',
       cta:'Order a site', menuOpen:'Open menu', backHome:'LAB301 — home',
       fBrand:'LAB301 / OPS', fAbout:'A lab building websites, AI&nbsp;agents and automations that move business metrics.',
@@ -87,7 +87,8 @@
     { id:'ai',       i:'03', label:t.ai,       href:'ai-assistant.html' },
     { id:'process',  i:'04', label:t.process,  href:'process.html' },
     { id:'cases',    i:'05', label:t.cases,    href:'cases.html' },
-    { id:'contacts', i:'06', label:t.contacts, href:'contacts.html' },
+    { id:'news',     i:'06', label:t.news,     href:'news.html' },
+    { id:'contacts', i:'07', label:t.contacts, href:'contacts.html' },
   ];
 
   const now = new Date();
@@ -170,6 +171,7 @@
               <li><a href="ai-assistant.html">${t.ai}</a></li>
               <li><a href="process.html">${t.process}</a></li>
               <li><a href="cases.html">${t.cases}</a></li>
+              <li><a href="news.html">${t.news}</a></li>
               <li><a href="privacy.html">Конфиденциальность</a></li>
               <li><a href="faq.html">${t.faq}</a></li>
             </ul>
