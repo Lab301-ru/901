@@ -1,0 +1,50 @@
+name: Build news pages
+
+# Пересобирает статические страницы новостей, когда меняются данные.
+# Админка коммитит только news/data/*.json и картинки — этот workflow
+# генерирует news.html, news/<slug>.html, news/index.json, news/rss.xml
+# и обновляет sitemap.xml, затем коммитит результат обратно.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'news/data/**'
+      - 'images/news/**'
+      - 'scripts/build-news.mjs'
+      - '.github/workflows/build-news.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: build-news
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Generate news pages
+        run: node scripts/build-news.mjs
+
+      - name: Commit generated pages
+        run: |
+          git config user.name  "lab301-bot"
+          git config user.email "bot@lab301.ru"
+          git add news.html news/ sitemap.xml
+          if git diff --cached --quiet; then
+            echo "Изменений нет — пропускаю коммит."
+          else
+            git commit -m "chore(news): regenerate news pages [skip ci]"
+            git push
+          fi

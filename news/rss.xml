@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>Новости LAB301</title>
+    <link>https://lab301.ru/news.html</link>
+    <description>Новости и обновления студии LAB301</description>
+    <language>ru</language>
+    <lastBuildDate>Wed, 24 Jun 2026 17:21:16 GMT</lastBuildDate>
+    <item>
+      <title>Запустили раздел новостей</title>
+      <link>https://lab301.ru/news/zapustili-razdel-novostey.html</link>
+      <guid isPermaLink="true">https://lab301.ru/news/zapustili-razdel-novostey.html</guid>
+      <pubDate>Wed, 24 Jun 2026 09:00:00 GMT</pubDate>
+      <description>Теперь на сайте LAB301 есть новости: запуски проектов, продукты студии и технологии — каждая запись попадает в поиск отдельной страницей.</description>
+    </item>
+  </channel>
+</rss>

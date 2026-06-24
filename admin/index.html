@@ -1,0 +1,373 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>LAB301 — Админка новостей</title>
+<link rel="icon" href="/favicon.ico">
+<link rel="stylesheet" href="https://unpkg.com/trix@2.1.1/dist/trix.css">
+<script src="https://unpkg.com/trix@2.1.1/dist/trix.umd.min.js"></script>
+<style>
+:root{
+  --bg:#050505; --panel:#0d0d0d; --panel2:#141414; --text:#fff; --muted:#9a9a9a;
+  --red:#ff1b2d; --green:#16a34a; --border:rgba(255,255,255,.10); --radius:16px;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:Inter,system-ui,Arial,sans-serif;background:
+  radial-gradient(circle at top right,rgba(255,27,45,.12),transparent 30%),
+  linear-gradient(180deg,#000,#080808);color:var(--text);min-height:100vh}
+a{color:#ff6b76}
+.wrap{max-width:920px;margin:0 auto;padding:28px 18px 80px}
+.head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:22px;flex-wrap:wrap}
+.brand{font-weight:800;letter-spacing:.04em;font-size:18px}
+.brand small{display:block;font-weight:500;color:var(--muted);font-size:12px;letter-spacing:.02em}
+.card{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);padding:22px;margin-bottom:18px}
+label{display:block;font-size:13px;color:var(--muted);margin:14px 0 6px}
+input[type=text],input[type=date],input[type=password],textarea,select{
+  width:100%;background:var(--panel2);border:1px solid var(--border);color:var(--text);
+  border-radius:10px;padding:11px 13px;font-size:15px;font-family:inherit}
+textarea{min-height:70px;resize:vertical}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:640px){.row{grid-template-columns:1fr}}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--red);color:#fff;border:none;
+  border-radius:10px;padding:11px 18px;font-size:15px;font-weight:600;cursor:pointer;text-decoration:none}
+.btn:hover{filter:brightness(1.1)}
+.btn.ghost{background:transparent;border:1px solid var(--border);color:var(--text)}
+.btn.sm{padding:7px 12px;font-size:13px}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+.muted{color:var(--muted);font-size:13px;line-height:1.5}
+.hint{font-size:12.5px;color:var(--muted);margin-top:5px;line-height:1.5}
+.toolbar{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.list-item{display:flex;align-items:center;gap:12px;padding:12px;border:1px solid var(--border);
+  border-radius:12px;margin-bottom:10px;background:var(--panel2)}
+.list-item img{width:64px;height:44px;object-fit:cover;border-radius:8px;background:#222;flex:none}
+.list-item .li-main{flex:1;min-width:0}
+.list-item .li-title{font-weight:600;font-size:14.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.list-item .li-sub{color:var(--muted);font-size:12px;margin-top:2px}
+.pill{display:inline-block;padding:3px 9px;border-radius:999px;font-size:12px;border:1px solid var(--border)}
+.pill.ok{color:var(--green);border-color:rgba(22,163,74,.4)}
+.pill.off{color:var(--muted)}
+#toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:#111;border:1px solid var(--border);
+  padding:12px 18px;border-radius:12px;font-size:14px;opacity:0;pointer-events:none;transition:.25s;z-index:50;max-width:90vw}
+#toast.show{opacity:1}
+#toast.err{border-color:var(--red)}
+.hidden{display:none}
+trix-editor{background:var(--panel2);border:1px solid var(--border);border-radius:10px;min-height:240px;color:var(--text)}
+trix-toolbar .trix-button-group{border-color:var(--border)}
+trix-toolbar .trix-button{background:#1c1c1c}
+.cover-prev{margin-top:10px;max-width:100%;border-radius:10px;border:1px solid var(--border);display:none}
+details summary{cursor:pointer;color:var(--muted);font-size:13px}
+code{background:#1c1c1c;padding:2px 6px;border-radius:5px;font-size:12.5px}
+.spin{display:inline-block;width:14px;height:14px;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:sp .7s linear infinite}
+@keyframes sp{to{transform:rotate(360deg)}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="head">
+    <div class="brand">LAB301 — Админка<small>Новости · публикация SEO-страниц</small></div>
+    <div><span id="authPill" class="pill off">не подключено</span> <button id="logoutBtn" class="btn ghost sm hidden">Выйти</button></div>
+  </div>
+
+  <!-- ЭКРАН ВХОДА -->
+  <section id="loginView">
+    <div class="card">
+      <h3 style="margin-top:0">Вход</h3>
+      <p class="muted">Для записи новостей нужен персональный токен GitHub (fine-grained), ограниченный <b>только этим репозиторием</b> с правом <b>Contents: Read and write</b>. Токен хранится только в этом браузере и никуда не отправляется, кроме api.github.com.</p>
+      <label>GitHub fine-grained token</label>
+      <input id="tokenInput" type="password" placeholder="github_pat_..." autocomplete="off">
+      <div class="toolbar">
+        <button id="connectBtn" class="btn">Подключиться</button>
+      </div>
+      <details style="margin-top:16px">
+        <summary>Как создать токен (1 минута)</summary>
+        <ol class="muted" style="line-height:1.7">
+          <li>GitHub → Settings → Developer settings → <b>Fine-grained tokens</b> → Generate new token.</li>
+          <li>Repository access → <b>Only select repositories</b> → <code>Lab301-ru/lab301.ru</code>.</li>
+          <li>Permissions → Repository permissions → <b>Contents</b> → <b>Read and write</b>.</li>
+          <li>Сгенерируйте, скопируйте и вставьте сюда. Поставьте срок жизни; при утере — отзовите токен.</li>
+        </ol>
+      </details>
+    </div>
+  </section>
+
+  <!-- ПАНЕЛЬ -->
+  <section id="appView" class="hidden">
+
+    <div class="card">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap">
+        <h3 style="margin:0">Новости</h3>
+        <button id="newBtn" class="btn sm">+ Новая новость</button>
+      </div>
+      <div id="list" style="margin-top:16px"><p class="muted">Загрузка…</p></div>
+    </div>
+
+    <!-- РЕДАКТОР -->
+    <div id="editor" class="card hidden">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <h3 id="editorTitle" style="margin:0">Новая новость</h3>
+        <button id="closeEditor" class="btn ghost sm">Закрыть</button>
+      </div>
+
+      <label>Заголовок</label>
+      <input id="fTitle" type="text" placeholder="Например: Запустили новый продукт">
+
+      <div class="row">
+        <div>
+          <label>Адрес страницы (slug)</label>
+          <input id="fSlug" type="text" placeholder="zapustili-produkt">
+          <div class="hint">URL: <span id="slugPreview" class="muted">/news/…</span></div>
+        </div>
+        <div>
+          <label>Дата публикации</label>
+          <input id="fDate" type="date">
+        </div>
+      </div>
+
+      <label>Короткое описание (для поиска и соцсетей, до ~160 символов)</label>
+      <textarea id="fDesc" maxlength="220" placeholder="Одно-два предложения о сути новости"></textarea>
+
+      <label>Теги (через запятую)</label>
+      <input id="fTags" type="text" placeholder="продукт, запуск">
+
+      <label>Обложка</label>
+      <input id="fCoverFile" type="file" accept="image/*">
+      <div class="hint">Большие фото автоматически уменьшаются и конвертируются в WebP. Можно оставить пустым.</div>
+      <img id="coverPrev" class="cover-prev" alt="">
+      <input id="fCover" type="text" placeholder="images/news/...">
+
+      <label>Текст новости</label>
+      <input id="trixInput" type="hidden">
+      <trix-editor input="trixInput"></trix-editor>
+      <div class="hint">Картинки можно перетаскивать прямо в текст — они загрузятся в репозиторий автоматически.</div>
+
+      <div class="toolbar">
+        <button id="saveBtn" class="btn">Опубликовать</button>
+        <button id="cancelBtn" class="btn ghost">Отмена</button>
+      </div>
+      <p class="hint">После публикации страница соберётся автоматически (GitHub Action) обычно за ~1 минуту и появится по адресу выше.</p>
+    </div>
+
+  </section>
+</div>
+
+<div id="toast"></div>
+
+<script>
+const OWNER='Lab301-ru', REPO='lab301.ru', BRANCH='main';
+const API=`https://api.github.com/repos/${OWNER}/${REPO}`;
+let TOKEN=localStorage.getItem('lab301_gh_token')||'';
+let editingSlug=null; // null = новая
+
+// ── утилиты ──────────────────────────────────────────────────────────────
+const $=id=>document.getElementById(id);
+function toast(msg,err){const t=$('toast');t.textContent=msg;t.className='show'+(err?' err':'');setTimeout(()=>t.className='',err?4500:2500);}
+function bytesToB64(bytes){let bin='';const c=0x8000;for(let i=0;i<bytes.length;i+=c){bin+=String.fromCharCode.apply(null,bytes.subarray(i,i+c));}return btoa(bin);}
+function strToB64(str){return bytesToB64(new TextEncoder().encode(str));}
+function b64ToStr(b64){return decodeURIComponent(escape(atob((b64||'').replace(/\s/g,''))));}
+function slugify(s){return (s||'').toLowerCase()
+  .replace(/[а-яё]/g,ch=>({а:'a',б:'b',в:'v',г:'g',д:'d',е:'e',ё:'e',ж:'zh',з:'z',и:'i',й:'y',к:'k',л:'l',м:'m',н:'n',о:'o',п:'p',р:'r',с:'s',т:'t',у:'u',ф:'f',х:'h',ц:'c',ч:'ch',ш:'sh',щ:'sch',ъ:'',ы:'y',ь:'',э:'e',ю:'yu',я:'ya'}[ch]||ch))
+  .replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'').slice(0,60);}
+function todayISO(){return new Date().toISOString().slice(0,10);}
+
+// ── GitHub API ───────────────────────────────────────────────────────────
+async function gh(path,opts={}){
+  const r=await fetch(API+path,{...opts,headers:{
+    'Authorization':'Bearer '+TOKEN,'Accept':'application/vnd.github+json',
+    'X-GitHub-Api-Version':'2022-11-28',...(opts.headers||{})}});
+  if(r.status===404)return null;
+  if(!r.ok){let m='';try{m=(await r.json()).message;}catch(e){}throw new Error('GitHub: '+r.status+' '+m);}
+  return r.status===204?true:r.json();
+}
+async function getFile(p){const j=await gh('/contents/'+p+'?ref='+BRANCH);return j?{sha:j.sha,text:b64ToStr(j.content)}:null;}
+async function putFile(p,b64,message,sha){
+  const body={message,content:b64,branch:BRANCH};if(sha)body.sha=sha;
+  return gh('/contents/'+p,{method:'PUT',body:JSON.stringify(body)});}
+async function delFile(p,sha,message){return gh('/contents/'+p,{method:'DELETE',body:JSON.stringify({message,sha,branch:BRANCH})});}
+
+// ── картинки: ресайз + webp ──────────────────────────────────────────────
+async function processImage(file){
+  const okConv=/^image\/(jpe?g|png|webp)$/i.test(file.type);
+  if(!okConv){const buf=new Uint8Array(await file.arrayBuffer());return{bytes:buf,ext:(file.name.split('.').pop()||'img').toLowerCase()};}
+  try{
+    const img=await new Promise((res,rej)=>{const i=new Image();i.onload=()=>res(i);i.onerror=rej;i.src=URL.createObjectURL(file);});
+    const max=1600;let{width:w,height:h}=img;if(w>max){h=Math.round(h*max/w);w=max;}
+    const cv=document.createElement('canvas');cv.width=w;cv.height=h;cv.getContext('2d').drawImage(img,0,0,w,h);
+    const blob=await new Promise(r=>cv.toBlob(r,'image/webp',0.85));
+    if(!blob)throw 0;
+    return{bytes:new Uint8Array(await blob.arrayBuffer()),ext:'webp'};
+  }catch(e){const buf=new Uint8Array(await file.arrayBuffer());return{bytes:buf,ext:(file.name.split('.').pop()||'img').toLowerCase()};}
+}
+async function uploadImage(file,baseName){
+  const{bytes,ext}=await processImage(file);
+  const name=(slugify(baseName)||'img')+'-'+Date.now().toString(36)+'.'+ext;
+  const path='images/news/'+name;
+  await putFile(path,bytesToB64(bytes),'feat(news): upload image '+name);
+  return path;
+}
+
+// ── санитайзер тела (whitelist) ───────────────────────────────────────────
+const TAG_MAP={H1:'h2',H2:'h2',H3:'h3',DIV:'p',P:'p',BLOCKQUOTE:'blockquote',
+  UL:'ul',OL:'ol',LI:'li',STRONG:'strong',B:'strong',EM:'em',I:'em',A:'a',BR:'br',IMG:'img',PRE:'pre',CODE:'code'};
+function sanitize(html){
+  const doc=new DOMParser().parseFromString('<div id="r">'+html+'</div>','text/html');
+  const root=doc.getElementById('r');
+  function clean(node){
+    [...node.childNodes].forEach(ch=>{
+      if(ch.nodeType===3)return; // текст
+      if(ch.nodeType!==1){ch.remove();return;}
+      const tag=ch.tagName;
+      clean(ch);
+      const map=TAG_MAP[tag];
+      if(!map){ // неизвестный тег (figure, span…) — разворачиваем
+        while(ch.firstChild)node.insertBefore(ch.firstChild,ch);ch.remove();return;}
+      // создаём чистый элемент только с разрешёнными атрибутами
+      const el=doc.createElement(map);
+      if(map==='a'){const href=ch.getAttribute('href')||'';if(href)el.setAttribute('href',href);el.setAttribute('rel','noopener');}
+      if(map==='img'){const src=ch.getAttribute('src')||ch.getAttribute('url')||'';if(!src){ch.remove();return;}el.setAttribute('src',src);el.setAttribute('alt',ch.getAttribute('alt')||'');el.setAttribute('loading','lazy');}
+      while(ch.firstChild)el.appendChild(ch.firstChild);
+      ch.replaceWith(el);
+    });
+  }
+  clean(root);
+  return root.innerHTML.replace(/\s+\n/g,'\n').trim();
+}
+
+// ── Trix: загрузка вложений в репозиторий ─────────────────────────────────
+addEventListener('trix-attachment-add',async e=>{
+  const at=e.attachment;if(!at.file)return;
+  try{const path=await uploadImage(at.file,'body');
+    at.setAttributes({url:'/'+path,href:'/'+path});}
+  catch(err){toast('Ошибка загрузки картинки: '+err.message,true);at.remove();}
+});
+
+// ── список новостей ───────────────────────────────────────────────────────
+async function loadList(){
+  const box=$('list');box.innerHTML='<p class="muted">Загрузка…</p>';
+  try{
+    const f=await getFile('news/index.json');
+    const items=f?JSON.parse(f.text):[];
+    if(!items.length){box.innerHTML='<p class="muted">Пока нет ни одной новости. Нажмите «+ Новая новость».</p>';return;}
+    box.innerHTML='';
+    items.forEach(n=>{
+      const div=document.createElement('div');div.className='list-item';
+      div.innerHTML=`<img src="${n.cover?'/'+n.cover:'/og-share.png'}" alt="" onerror="this.style.visibility='hidden'">
+        <div class="li-main"><div class="li-title"></div><div class="li-sub">${n.date} · /news/${n.slug}.html</div></div>
+        <button class="btn ghost sm" data-edit="${n.slug}">Изм.</button>
+        <button class="btn ghost sm" data-del="${n.slug}">Удал.</button>`;
+      div.querySelector('.li-title').textContent=n.title;
+      box.appendChild(div);
+    });
+    box.querySelectorAll('[data-edit]').forEach(b=>b.onclick=()=>openEditor(b.dataset.edit));
+    box.querySelectorAll('[data-del]').forEach(b=>b.onclick=()=>removeNews(b.dataset.del));
+  }catch(e){box.innerHTML='<p class="muted">Не удалось загрузить список: '+e.message+'</p>';}
+}
+
+// ── открыть редактор ──────────────────────────────────────────────────────
+function setBody(html){const inp=$('trixInput');const ed=document.querySelector('trix-editor');ed.editor.loadHTML(html||'');}
+function resetForm(){
+  editingSlug=null;$('editorTitle').textContent='Новая новость';
+  fTitle.value='';fSlug.value='';fSlug.disabled=false;fDesc.value='';fTags.value='';fCover.value='';
+  fDate.value=todayISO();$('coverPrev').style.display='none';setBody('');updateSlugPreview();
+}
+async function openEditor(slug){
+  showEditor();
+  if(!slug){resetForm();return;}
+  toast('Загрузка новости…');
+  try{
+    const f=await getFile('news/data/'+slug+'.json');
+    if(!f){toast('Файл не найден',true);return;}
+    const n=JSON.parse(f.text);
+    editingSlug=n.slug;$('editorTitle').textContent='Редактирование';
+    fTitle.value=n.title||'';fSlug.value=n.slug||'';fSlug.disabled=true;
+    fDesc.value=n.description||'';fTags.value=(n.tags||[]).join(', ');
+    fCover.value=n.cover||'';fDate.value=n.date||todayISO();
+    if(n.cover){const p=$('coverPrev');p.src='/'+n.cover;p.style.display='block';}else{$('coverPrev').style.display='none';}
+    setBody(n.bodyHtml||'');updateSlugPreview();
+  }catch(e){toast('Ошибка: '+e.message,true);}
+}
+function showEditor(){$('editor').classList.remove('hidden');$('editor').scrollIntoView({behavior:'smooth'});}
+function hideEditor(){$('editor').classList.add('hidden');}
+function updateSlugPreview(){$('slugPreview').textContent='/news/'+(fSlug.value||'…')+'.html';}
+
+// ── сохранить ────────────────────────────────────────────────────────────
+async function save(){
+  const title=fTitle.value.trim();
+  let slug=editingSlug||slugify(fSlug.value||title);
+  if(!title){toast('Введите заголовок',true);return;}
+  if(!slug){toast('Введите адрес (slug)',true);return;}
+  const btn=$('saveBtn');btn.disabled=true;const old=btn.innerHTML;btn.innerHTML='<span class="spin"></span> Публикую…';
+  try{
+    const path='news/data/'+slug+'.json';
+    const existing=await getFile(path);
+    if(existing && !editingSlug){throw new Error('Новость с таким адресом уже есть — измените slug.');}
+    const data={
+      slug,title,
+      description:fDesc.value.trim(),
+      cover:fCover.value.trim(),
+      date:fDate.value||todayISO(),
+      updated:todayISO(),
+      author:'LAB301',
+      tags:fTags.value.split(',').map(s=>s.trim()).filter(Boolean),
+      bodyHtml:sanitize($('trixInput').value)
+    };
+    await putFile(path,strToB64(JSON.stringify(data,null,2)+'\n'),
+      (editingSlug?'feat(news): update ':'feat(news): publish ')+slug,existing?existing.sha:null);
+    toast('Опубликовано! Страница соберётся за ~1 минуту.');
+    hideEditor();setTimeout(loadList,1200);
+  }catch(e){toast(e.message,true);}
+  finally{btn.disabled=false;btn.innerHTML=old;}
+}
+
+// ── удалить ──────────────────────────────────────────────────────────────
+async function removeNews(slug){
+  if(!confirm('Удалить новость «'+slug+'»? Страница пропадёт из поиска после пересборки.'))return;
+  try{
+    const f=await getFile('news/data/'+slug+'.json');
+    if(!f){toast('Уже удалено',true);loadList();return;}
+    await delFile('news/data/'+slug+'.json',f.sha,'chore(news): remove '+slug);
+    toast('Удалено. Страница исчезнет после пересборки.');setTimeout(loadList,1200);
+  }catch(e){toast(e.message,true);}
+}
+
+// ── обложка: загрузка ─────────────────────────────────────────────────────
+$('fCoverFile').addEventListener('change',async e=>{
+  const file=e.target.files[0];if(!file)return;
+  toast('Загрузка обложки…');
+  try{const path=await uploadImage(file,fTitle.value||'cover');
+    fCover.value=path;const p=$('coverPrev');p.src='/'+path;p.style.display='block';toast('Обложка загружена');}
+  catch(err){toast('Ошибка: '+err.message,true);}
+});
+fTitle.addEventListener('input',()=>{if(!editingSlug && !fSlug.dataset.touched){fSlug.value=slugify(fTitle.value);updateSlugPreview();}});
+fSlug.addEventListener('input',()=>{fSlug.dataset.touched='1';fSlug.value=slugify(fSlug.value);updateSlugPreview();});
+
+// ── вход / выход ──────────────────────────────────────────────────────────
+async function connect(token){
+  TOKEN=token;
+  const r=await fetch(API,{headers:{'Authorization':'Bearer '+TOKEN,'Accept':'application/vnd.github+json'}});
+  if(!r.ok)throw new Error('Токен недействителен или нет доступа к репозиторию ('+r.status+').');
+}
+function enterApp(){
+  $('loginView').classList.add('hidden');$('appView').classList.remove('hidden');
+  $('authPill').className='pill ok';$('authPill').textContent='подключено';$('logoutBtn').classList.remove('hidden');
+  loadList();
+}
+$('connectBtn').onclick=async()=>{
+  const tok=$('tokenInput').value.trim();if(!tok){toast('Вставьте токен',true);return;}
+  const b=$('connectBtn');b.disabled=true;b.textContent='Проверка…';
+  try{await connect(tok);localStorage.setItem('lab301_gh_token',tok);enterApp();}
+  catch(e){toast(e.message,true);}finally{b.disabled=false;b.textContent='Подключиться';}
+};
+$('logoutBtn').onclick=()=>{localStorage.removeItem('lab301_gh_token');location.reload();};
+$('newBtn').onclick=()=>openEditor(null);
+$('closeEditor').onclick=hideEditor;
+$('cancelBtn').onclick=hideEditor;
+$('saveBtn').onclick=save;
+
+// автологин, если токен уже сохранён
+(async()=>{if(TOKEN){try{await connect(TOKEN);enterApp();}catch(e){localStorage.removeItem('lab301_gh_token');}}})();
+</script>
+</body>
+</html>
