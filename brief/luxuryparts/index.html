@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="theme-color" content="#0a0a0f">
+<title>LuxuryParts — бриф по проекту</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+  html, body { height: 100%; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: #0a0a0f;
+    color: #e5e5e5;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  .container {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 0 20px 24px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  .progress-wrap {
+    position: sticky;
+    top: 0;
+    background: linear-gradient(180deg, #0a0a0f 70%, transparent);
+    padding: 18px 0 14px;
+    z-index: 10;
+  }
+  .progress-bar {
+    height: 4px;
+    background: #1a1a24;
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #dc2626, #ef4444);
+    border-radius: 2px;
+    transition: width 0.4s ease;
+    width: 0;
+  }
+  .progress-text {
+    margin-top: 8px;
+    font-size: 12px;
+    color: #888;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  }
+  .back-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 12px;
+    color: #888;
+    font-family: inherit;
+    padding: 4px 8px;
+  }
+  .back-btn:hover { color: #fff; }
+
+  .screen {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 0;
+    animation: fadeIn 0.35s ease;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .intro { justify-content: center; padding: 50px 0; }
+  .intro .tag {
+    color: #4ade80;
+    font-size: 13px;
+    margin-bottom: 16px;
+    font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+    letter-spacing: 0.5px;
+  }
+  .intro h1 {
+    font-size: 30px;
+    font-weight: 700;
+    margin-bottom: 18px;
+    color: #fff;
+    line-height: 1.15;
+  }
+  .intro p {
+    color: #b5b5b5;
+    margin-bottom: 14px;
+    font-size: 16px;
+  }
+  .intro .meta {
+    display: flex;
+    gap: 20px;
+    margin: 24px 0 8px;
+    font-size: 13px;
+    color: #888;
+    font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  }
+  .intro .meta span::before {
+    content: '> ';
+    color: #4ade80;
+  }
+
+  .question-number {
+    color: #666;
+    font-size: 12px;
+    margin-bottom: 14px;
+    font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+    letter-spacing: 0.5px;
+  }
+  .question-text {
+    font-size: 22px;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 10px;
+    line-height: 1.3;
+  }
+  .question-hint {
+    font-size: 14px;
+    color: #888;
+    margin-bottom: 22px;
+    line-height: 1.5;
+  }
+
+  .options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  .option {
+    display: flex;
+    align-items: center;
+    padding: 15px 18px;
+    background: #15151c;
+    border: 1px solid #2a2a36;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    font-size: 15px;
+    color: #e5e5e5;
+    user-select: none;
+  }
+  .option:hover {
+    border-color: #dc2626;
+    background: #1a1a22;
+  }
+  .option:active { transform: scale(0.99); }
+  .option.selected {
+    border-color: #dc2626;
+    background: rgba(220, 38, 38, 0.08);
+    color: #fff;
+  }
+  .option .check {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #444;
+    border-radius: 50%;
+    margin-right: 14px;
+    flex-shrink: 0;
+    position: relative;
+    transition: all 0.15s ease;
+  }
+  .option.multi .check { border-radius: 5px; }
+  .option.selected .check {
+    border-color: #dc2626;
+    background: #dc2626;
+  }
+  .option.selected .check::after {
+    content: '';
+    position: absolute;
+    left: 4px;
+    top: 1px;
+    width: 6px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+  }
+
+  .text-input {
+    width: 100%;
+    padding: 14px 16px;
+    background: #15151c;
+    border: 1px solid #2a2a36;
+    border-radius: 12px;
+    color: #fff;
+    font-size: 15px;
+    font-family: inherit;
+    resize: vertical;
+    min-height: 110px;
+    margin-bottom: 16px;
+    line-height: 1.5;
+  }
+  .text-input:focus {
+    outline: none;
+    border-color: #dc2626;
+    background: #1a1a22;
+  }
+  .text-input::placeholder { color: #555; }
+
+  .actions {
+    display: flex;
+    gap: 10px;
+    margin-top: auto;
+    padding-top: 12px;
+  }
+  .btn {
+    flex: 1;
+    padding: 15px 20px;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 600;
+    font-family: inherit;
+    transition: all 0.15s ease;
+  }
+  .btn:active { transform: scale(0.98); }
+  .btn-primary {
+    background: #dc2626;
+    color: #fff;
+  }
+  .btn-primary:hover { background: #ef4444; }
+  .btn-primary:disabled {
+    background: #2a2a36;
+    color: #555;
+    cursor: not-allowed;
+    transform: none;
+  }
+  .btn-secondary {
+    background: #15151c;
+    color: #b5b5b5;
+    border: 1px solid #2a2a36;
+  }
+  .btn-secondary:hover { border-color: #444; color: #fff; }
+
+  .result .tag {
+    color: #4ade80;
+    font-size: 13px;
+    margin-bottom: 14px;
+    font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+    letter-spacing: 0.5px;
+  }
+  .result h1 {
+    font-size: 28px;
+    margin-bottom: 12px;
+    color: #fff;
+  }
+  .result p {
+    color: #b5b5b5;
+    margin-bottom: 20px;
+    font-size: 15px;
+  }
+  .summary {
+    background: #15151c;
+    border: 1px solid #2a2a36;
+    border-radius: 12px;
+    padding: 18px 20px;
+    margin-bottom: 24px;
+    max-height: 420px;
+    overflow-y: auto;
+    font-size: 14px;
+  }
+  .summary-item {
+    margin-bottom: 14px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid #22222e;
+  }
+  .summary-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+  .summary-q {
+    color: #888;
+    font-size: 13px;
+    margin-bottom: 5px;
+    line-height: 1.4;
+  }
+  .summary-a {
+    color: #fff;
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+  .send-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .send-actions .btn-ghost {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #666;
+    font-size: 14px;
+    padding: 12px;
+    font-family: inherit;
+  }
+  .send-actions .btn-ghost:hover { color: #fff; }
+
+  .toast {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%) translateY(120px);
+    background: #15151c;
+    border: 1px solid #4ade80;
+    color: #4ade80;
+    padding: 12px 22px;
+    border-radius: 10px;
+    font-size: 14px;
+    transition: transform 0.3s ease;
+    z-index: 100;
+    max-width: 90%;
+    text-align: center;
+  }
+  .toast.show {
+    transform: translateX(-50%) translateY(0);
+  }
+
+  .hidden { display: none !important; }
+
+  @media (max-width: 480px) {
+    .container { padding: 0 16px 20px; }
+    .question-text { font-size: 20px; }
+    .intro h1 { font-size: 26px; }
+    .intro { padding: 30px 0; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="progress-wrap hidden" id="progress-wrap">
+    <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+    <div class="progress-text">
+      <span id="progress-current">0 / 25</span>
+      <button class="back-btn" id="back-btn">← назад</button>
+    </div>
+  </div>
+
+  <div class="screen intro" id="intro">
+    <div class="tag">> LAB301 // новый проект</div>
+    <h1>Бриф по сайту LuxuryParts</h1>
+    <p>Привет! Чтобы я мог нормально оценить объём работ и сделать вменяемое предложение, нужно понять детали.</p>
+    <p>Это займёт 5–10 минут. Где не знаешь ответа — смело выбирай «уточню», это нормально. В конце результат можно отправить мне прямо в Telegram одной кнопкой.</p>
+    <div class="meta">
+      <span>25 вопросов</span>
+      <span>~7 минут</span>
+      <span>авто-сохранение</span>
+    </div>
+    <div class="actions" style="margin-top: 28px;">
+      <button class="btn btn-primary" id="start-btn">Начать</button>
+    </div>
+  </div>
+
+  <div class="screen hidden" id="question-screen">
+    <div class="question-number" id="q-number">Вопрос 1</div>
+    <div class="question-text" id="q-text"></div>
+    <div class="question-hint hidden" id="q-hint"></div>
+    <div class="options" id="q-options"></div>
+    <textarea class="text-input hidden" id="q-textarea" placeholder="Напиши ответ здесь..."></textarea>
+    <div class="actions">
+      <button class="btn btn-secondary hidden" id="skip-btn">Пропустить</button>
+      <button class="btn btn-primary" id="next-btn" disabled>Дальше</button>
+    </div>
+  </div>
+
+  <div class="screen result hidden" id="result-screen">
+    <div class="tag">> готово // ответы сохранены</div>
+    <h1>Спасибо, всё собрал</h1>
+    <p>Вот твои ответы. Жми кнопку ниже — они скопируются в буфер и откроется чат со мной в Telegram. Останется просто вставить и отправить.</p>
+    <div class="summary" id="summary"></div>
+    <div class="send-actions">
+      <button class="btn btn-primary" id="send-tg-btn">Отправить Юрию в Telegram</button>
+      <button class="btn btn-secondary" id="copy-btn">Только скопировать</button>
+      <button class="btn-ghost" id="restart-btn">Начать заново</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast">Скопировано</div>
+
+<script>
+const TELEGRAM_USERNAME = 'yuriybyg';
+const STORAGE_KEY = 'luxuryparts_brief_v1';
+
+const questions = [
+  {
+    id: 'bitrix_edition',
+    text: 'Какая редакция 1С-Битрикса куплена?',
+    hint: 'Если не знаешь — выбирай «уточню», спросишь у того, кто покупал. От редакции зависит, потянет ли система каталог.',
+    type: 'single',
+    options: ['Старт', 'Стандарт', 'Малый бизнес', 'Бизнес', 'Энтерпрайз', 'Не знаю — уточню']
+  },
+  {
+    id: 'bitrix_product',
+    text: 'Это «1С-Битрикс: Управление сайтом» или «Битрикс24»?',
+    hint: 'Это разные продукты. Для нашего сайта нужен первый.',
+    type: 'single',
+    options: ['Управление сайтом (CMS)', 'Битрикс24 (CRM)', 'Не уверен — уточню']
+  },
+  {
+    id: 'hosting',
+    text: 'Хостинг для сайта уже есть?',
+    type: 'single',
+    options: ['Да, есть', 'Нет, нужно подобрать', 'Не знаю']
+  },
+  {
+    id: 'domain',
+    text: 'На каком домене будет сайт?',
+    hint: 'Можно оставить luxuryparts.ru или сделать на новом.',
+    type: 'text',
+    placeholder: 'luxuryparts.ru / новый домен / уточню'
+  },
+  {
+    id: 'one_c_config',
+    text: 'Какая у тебя 1С?',
+    type: 'single',
+    options: ['1С: Управление торговлей (УТ)', '1С: УНФ', 'Другая конфигурация', 'Не знаю']
+  },
+  {
+    id: 'real_skus',
+    text: '5 миллионов позиций — это реально разные товары?',
+    hint: 'Часто бывает так: одна деталь применима к 50 моделям → в системе 50 строк. Уникальных артикулов в разы меньше.',
+    type: 'single',
+    options: ['Да, 5 млн уникальных артикулов', 'Это с дублями по моделям, реально меньше', 'Не знаю точно']
+  },
+  {
+    id: 'product_fields',
+    text: 'Что показывать на странице товара?',
+    hint: 'Можно выбрать несколько вариантов.',
+    type: 'multi',
+    options: ['Название', 'Артикул', 'Цена', 'Наличие на складе', 'Бренд', 'OEM-номер', 'Применимость к моделям авто']
+  },
+  {
+    id: 'sync_direction',
+    text: 'В какую сторону работает обмен с 1С?',
+    type: 'single',
+    options: ['Только 1С → сайт (показываем ассортимент)', 'В обе стороны (заказы с сайта попадают в 1С)', 'Пока непонятно']
+  },
+  {
+    id: 'sync_freq',
+    text: 'Как часто обновлять данные с 1С?',
+    hint: 'Чем чаще обновления — тем сложнее и дороже реализация.',
+    type: 'single',
+    options: ['Раз в сутки (ночью)', 'Раз в час', 'В реальном времени', 'Не знаю']
+  },
+  {
+    id: 'cart',
+    text: 'Покупка через сайт нужна?',
+    type: 'single',
+    options: ['Да, корзина и оформление заказа', 'Нет, только показ + заявка / звонок', 'Не уверен']
+  },
+  {
+    id: 'payment',
+    text: 'Онлайн-оплата нужна?',
+    type: 'single',
+    options: ['Да', 'Нет, оплата при получении или по счёту', 'Не уверен']
+  },
+  {
+    id: 'lk',
+    text: 'Личный кабинет клиента нужен?',
+    hint: 'История заказов, статусы доставки и т.п.',
+    type: 'single',
+    options: ['Да, нужен', 'Нет, обойдёмся', 'Не уверен']
+  },
+  {
+    id: 'service_pages',
+    text: 'Что делать со страницами сервиса по маркам (Ferrari, Maserati и т.д.)?',
+    type: 'single',
+    options: ['Оставить как есть', 'Тот же контент, новый дизайн', 'Полностью переписать', 'Убрать — только запчасти']
+  },
+  {
+    id: 'search_by',
+    text: 'Поиск на сайте — по чему искать?',
+    hint: 'Можно выбрать несколько вариантов.',
+    type: 'multi',
+    options: ['По названию', 'По артикулу', 'По OEM-номеру', 'По VIN авто', 'По марке / модели / году авто']
+  },
+  {
+    id: 'filters',
+    text: 'Какие фильтры нужны в каталоге?',
+    hint: 'Можно выбрать несколько.',
+    type: 'multi',
+    options: ['Марка авто', 'Модель', 'Год выпуска', 'Тип детали', 'Бренд запчасти', 'Цена', 'В наличии']
+  },
+  {
+    id: 'vin_search',
+    text: 'Подбор запчастей по VIN или госномеру нужен?',
+    hint: 'Это отдельная задача — нужна база соответствий или внешний платный сервис.',
+    type: 'single',
+    options: ['Да, обязательно', 'Желательно, но не критично', 'Нет, не нужно', 'Не знаю']
+  },
+  {
+    id: 'references',
+    text: 'Покажи 2–3 примера сайтов, которые тебе нравятся',
+    hint: 'Можно скинуть ссылки или описать словами что нравится.',
+    type: 'text',
+    placeholder: 'https://example.com — нравится каталог\nhttps://...\n...'
+  },
+  {
+    id: 'branding',
+    text: 'Логотип и фирменные цвета (золото + чёрный) сохраняем?',
+    type: 'single',
+    options: ['Да, оставляем', 'Меняем стиль', 'Хочу обсудить варианты']
+  },
+  {
+    id: 'keep',
+    text: 'Что с текущего сайта точно НУЖНО сохранить?',
+    type: 'text',
+    optional: true,
+    placeholder: 'Например: контакты, фото со склада, тексты про опыт работы...'
+  },
+  {
+    id: 'remove',
+    text: 'Что с текущего сайта точно УБРАТЬ?',
+    type: 'text',
+    optional: true,
+    placeholder: 'Что не нравится, устарело или просто лишнее'
+  },
+  {
+    id: 'deadline',
+    text: 'Когда нужен запуск?',
+    type: 'single',
+    options: ['Чем быстрее тем лучше', 'В течение 1 месяца', '2–3 месяца', 'Не горит, важнее качество']
+  },
+  {
+    id: 'seo',
+    text: 'SEO — позиции в Яндексе / Google сохранять?',
+    hint: 'Если сайт уже в выдаче — нужны редиректы со старых URL на новые.',
+    type: 'single',
+    options: ['Да, важно сохранить трафик', 'Не критично, начнём с нуля', 'Не знаю']
+  },
+  {
+    id: 'prev_dev',
+    text: 'С прежним разработчиком (ivankonovalov.ru) всё закрыто?',
+    type: 'single',
+    options: ['Да, работаем с нуля', 'Договорённостей нет', 'Нужно уточнить']
+  },
+  {
+    id: 'access',
+    text: 'Какие доступы у тебя на руках?',
+    hint: 'Можно выбрать несколько.',
+    type: 'multi',
+    options: ['Домен', 'Хостинг', 'Админка Битрикса', 'База 1С', 'Старый сайт (FTP / админка)', 'Ничего нет']
+  },
+  {
+    id: 'other',
+    text: 'Что-то ещё важное, что я не спросил?',
+    type: 'text',
+    optional: true,
+    placeholder: 'Любые пожелания, требования, ограничения...'
+  }
+];
+
+let state = { currentIndex: 0, answers: {} };
+
+function loadState() {
+  try {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (saved) {
+      const parsed = JSON.parse(saved);
+      if (parsed && parsed.answers) state = parsed;
+    }
+  } catch (e) {}
+}
+function saveState() {
+  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch (e) {}
+}
+function clearState() {
+  try { localStorage.removeItem(STORAGE_KEY); } catch (e) {}
+}
+
+const $ = (id) => document.getElementById(id);
+const intro = $('intro');
+const qScreen = $('question-screen');
+const resultScreen = $('result-screen');
+const progressWrap = $('progress-wrap');
+const progressFill = $('progress-fill');
+const progressCurrent = $('progress-current');
+const qNumber = $('q-number');
+const qText = $('q-text');
+const qHint = $('q-hint');
+const qOptions = $('q-options');
+const qTextarea = $('q-textarea');
+const nextBtn = $('next-btn');
+const skipBtn = $('skip-btn');
+const backBtn = $('back-btn');
+const summary = $('summary');
+const toast = $('toast');
+
+$('start-btn').addEventListener('click', () => {
+  loadState();
+  if (Object.keys(state.answers).length > 0 && state.currentIndex > 0 && state.currentIndex < questions.length) {
+    if (!confirm('Найдены сохранённые ответы. Продолжить с того места, где остановился?')) {
+      state = { currentIndex: 0, answers: {} };
+      clearState();
+    }
+  }
+  intro.classList.add('hidden');
+  qScreen.classList.remove('hidden');
+  progressWrap.classList.remove('hidden');
+  renderQuestion();
+});
+
+function renderQuestion() {
+  const idx = state.currentIndex;
+  if (idx >= questions.length) {
+    showResult();
+    return;
+  }
+  const q = questions[idx];
+
+  progressFill.style.width = (idx / questions.length * 100) + '%';
+  progressCurrent.textContent = (idx + 1) + ' / ' + questions.length;
+  qNumber.textContent = 'Вопрос ' + (idx + 1);
+  qText.textContent = q.text;
+
+  if (q.hint) {
+    qHint.textContent = q.hint;
+    qHint.classList.remove('hidden');
+  } else {
+    qHint.classList.add('hidden');
+  }
+
+  qOptions.innerHTML = '';
+  qOptions.classList.remove('hidden');
+  qTextarea.value = '';
+  qTextarea.classList.add('hidden');
+  skipBtn.classList.add('hidden');
+  nextBtn.disabled = true;
+  nextBtn.textContent = (idx === questions.length - 1) ? 'Готово' : 'Дальше';
+
+  const existing = state.answers[q.id];
+
+  if (q.type === 'single' || q.type === 'multi') {
+    q.options.forEach((opt) => {
+      const div = document.createElement('div');
+      div.className = 'option' + (q.type === 'multi' ? ' multi' : '');
+      const span = document.createElement('span');
+      span.textContent = opt;
+      const check = document.createElement('div');
+      check.className = 'check';
+      div.appendChild(check);
+      div.appendChild(span);
+
+      if (existing) {
+        if (q.type === 'single' && existing === opt) div.classList.add('selected');
+        if (q.type === 'multi' && Array.isArray(existing) && existing.includes(opt)) div.classList.add('selected');
+      }
+
+      div.addEventListener('click', () => {
+        if (q.type === 'single') {
+          qOptions.querySelectorAll('.option').forEach(o => o.classList.remove('selected'));
+          div.classList.add('selected');
+          state.answers[q.id] = opt;
+          saveState();
+          nextBtn.disabled = false;
+          setTimeout(advance, 220);
+        } else {
+          div.classList.toggle('selected');
+          const selected = Array.from(qOptions.querySelectorAll('.option.selected'))
+            .map(o => o.querySelector('span').textContent);
+          state.answers[q.id] = selected;
+          saveState();
+          nextBtn.disabled = selected.length === 0;
+        }
+      });
+      qOptions.appendChild(div);
+    });
+    if (existing) {
+      if (q.type === 'single') nextBtn.disabled = false;
+      else nextBtn.disabled = !(Array.isArray(existing) && existing.length > 0);
+    }
+  } else if (q.type === 'text') {
+    qOptions.classList.add('hidden');
+    qTextarea.classList.remove('hidden');
+    qTextarea.placeholder = q.placeholder || 'Напиши ответ...';
+    if (existing) qTextarea.value = existing;
+
+    if (q.optional) {
+      skipBtn.classList.remove('hidden');
+      skipBtn.textContent = 'Пропустить';
+      nextBtn.disabled = false;
+    } else {
+      nextBtn.disabled = !(existing && existing.trim());
+    }
+
+    qTextarea.oninput = () => {
+      state.answers[q.id] = qTextarea.value;
+      saveState();
+      if (!q.optional) nextBtn.disabled = !qTextarea.value.trim();
+    };
+
+    setTimeout(() => qTextarea.focus(), 100);
+  }
+
+  backBtn.style.visibility = idx === 0 ? 'hidden' : 'visible';
+}
+
+function advance() {
+  state.currentIndex++;
+  saveState();
+  renderQuestion();
+}
+
+nextBtn.addEventListener('click', () => {
+  const q = questions[state.currentIndex];
+  if (q.type === 'text') {
+    const val = qTextarea.value.trim();
+    if (val) state.answers[q.id] = val;
+    else delete state.answers[q.id];
+    saveState();
+  }
+  advance();
+});
+
+skipBtn.addEventListener('click', () => {
+  const q = questions[state.currentIndex];
+  delete state.answers[q.id];
+  saveState();
+  advance();
+});
+
+backBtn.addEventListener('click', () => {
+  if (state.currentIndex > 0) {
+    state.currentIndex--;
+    saveState();
+    renderQuestion();
+  }
+});
+
+function buildSummaryText() {
+  let txt = '🚗 БРИФ: LuxuryParts\n';
+  txt += '━━━━━━━━━━━━━━━━━━━━━━━\n\n';
+  questions.forEach((q, i) => {
+    const a = state.answers[q.id];
+    let val = '— не отвечено';
+    if (a !== undefined) {
+      if (Array.isArray(a)) val = a.length ? a.join(', ') : '— не отвечено';
+      else if (typeof a === 'string' && a.trim()) val = a;
+    }
+    txt += (i + 1) + '. ' + q.text + '\n→ ' + val + '\n\n';
+  });
+  return txt;
+}
+
+function showResult() {
+  qScreen.classList.add('hidden');
+  progressWrap.classList.add('hidden');
+  resultScreen.classList.remove('hidden');
+
+  summary.innerHTML = '';
+  questions.forEach((q, i) => {
+    const a = state.answers[q.id];
+    let val = '— не отвечено';
+    if (a !== undefined) {
+      if (Array.isArray(a)) val = a.length ? a.join(', ') : '— не отвечено';
+      else if (typeof a === 'string' && a.trim()) val = a;
+    }
+    const div = document.createElement('div');
+    div.className = 'summary-item';
+    const qDiv = document.createElement('div');
+    qDiv.className = 'summary-q';
+    qDiv.textContent = (i + 1) + '. ' + q.text;
+    const aDiv = document.createElement('div');
+    aDiv.className = 'summary-a';
+    aDiv.textContent = val;
+    div.appendChild(qDiv);
+    div.appendChild(aDiv);
+    summary.appendChild(div);
+  });
+}
+
+function showToast(msg) {
+  toast.textContent = msg;
+  toast.classList.add('show');
+  setTimeout(() => toast.classList.remove('show'), 2800);
+}
+
+async function copyText(txt) {
+  try {
+    await navigator.clipboard.writeText(txt);
+    return true;
+  } catch (e) {
+    try {
+      const ta = document.createElement('textarea');
+      ta.value = txt;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+      return true;
+    } catch (e2) {
+      return false;
+    }
+  }
+}
+
+$('copy-btn').addEventListener('click', async () => {
+  const txt = buildSummaryText();
+  const ok = await copyText(txt);
+  showToast(ok ? '✓ Скопировано — вставь в Telegram' : 'Не удалось скопировать');
+});
+
+$('send-tg-btn').addEventListener('click', async () => {
+  const txt = buildSummaryText();
+  const ok = await copyText(txt);
+  if (ok) {
+    showToast('✓ Ответы в буфере — открываю чат с Юрием');
+  } else {
+    showToast('Открываю Telegram — скопируй вручную');
+  }
+  setTimeout(() => {
+    window.open('https://t.me/' + TELEGRAM_USERNAME, '_blank');
+  }, 1200);
+});
+
+$('restart-btn').addEventListener('click', () => {
+  if (!confirm('Начать заново? Все ответы будут стёрты.')) return;
+  state = { currentIndex: 0, answers: {} };
+  clearState();
+  resultScreen.classList.add('hidden');
+  intro.classList.remove('hidden');
+});
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter' && !e.shiftKey && !qScreen.classList.contains('hidden')) {
+    if (e.target.tagName === 'TEXTAREA') return;
+    if (!nextBtn.disabled) {
+      e.preventDefault();
+      nextBtn.click();
+    }
+  }
+});
+</script>
+</body>
+</html>
