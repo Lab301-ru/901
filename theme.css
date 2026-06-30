@@ -964,24 +964,79 @@ footer { padding: 64px 0 28px; border-top: 1px solid var(--rule); position:relat
 }
 
 /* ── Новости: страница статьи ─────────────────────────────────────────── */
-.article { max-width: 760px; margin: 32px 0 0; }
-.article-meta {
-  display:flex; align-items:center; gap:10px; flex-wrap:wrap;
-  font-family: var(--font-m); font-size: 12px; letter-spacing:.04em;
-  text-transform: uppercase; color: var(--ink-2); margin-bottom: 18px;
+.article-page { padding-bottom: 24px; border-bottom: none; }
+.article-layout {
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr);
+  gap: 56px;
+  margin-top: 28px;
+  align-items: start;
 }
-.article-meta .sep { opacity:.5; }
+.article-side {
+  position: sticky; top: 110px;
+  font-family: var(--font-m); font-size: 11px;
+  line-height: 1.55; letter-spacing: .05em;
+  text-transform: uppercase; color: var(--ink-2);
+  border-top: 1px solid var(--rule); padding-top: 18px;
+}
+.article-side dl { margin: 0; }
+.article-side dt {
+  color: var(--acc); font-weight: 700; letter-spacing: .12em;
+  margin-top: 20px;
+}
+.article-side dt:first-child { margin-top: 0; }
+.article-side dd {
+  margin: 4px 0 0; color: var(--ink); font-weight: 500;
+  word-break: normal;
+}
+.article-side dd.break { word-break: break-all; color: var(--ink-2); }
+.article-main { min-width: 0; max-width: 920px; }
+.article-label {
+  font-family: var(--font-m); font-size: 11px; letter-spacing: .18em;
+  text-transform: uppercase; color: var(--acc); margin-bottom: 22px;
+}
+.article-label::before { content: "—— "; color: var(--acc); }
 .article-title {
-  font-family: var(--font-d); font-weight: 700; line-height: 1.08;
-  font-size: clamp(30px, 5vw, 52px); margin: 0 0 18px;
+  font-family: var(--font-d); font-weight: 700; line-height: 1.02;
+  letter-spacing: -.035em;
+  font-size: clamp(36px, 6.5vw, 88px);
+  margin: 0 0 22px;
 }
 .article-lede {
-  font-size: 19px; line-height: 1.55; color: var(--ink-2);
-  max-width: 60ch; margin: 0 0 28px;
+  font-size: 20px; line-height: 1.55; color: var(--ink-2);
+  max-width: 64ch; margin: 0 0 36px;
+}
+.article-cover-wrap {
+  position: relative; margin: 0 0 36px;
+  border-radius: 20px; overflow: hidden;
+  border: 1px solid var(--rule);
 }
 .article-cover {
-  display:block; width:100%; height:auto; border-radius: 18px;
-  border: 1px solid var(--rule); margin: 0 0 32px;
+  display: block; width: 100%; height: auto;
+}
+.article-cover-tags {
+  position: absolute; left: 14px; right: 14px; top: 14px;
+  padding: 10px 14px;
+  background: rgba(0,0,0,.55);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  font-family: var(--font-m); font-size: 11px; line-height: 1.4;
+  letter-spacing: .08em; text-transform: uppercase; color: var(--ink);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+@media (max-width: 900px) {
+  .article-layout { grid-template-columns: 1fr; gap: 28px; margin-top: 18px; }
+  .article-side {
+    position: static; top: auto;
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px 24px;
+    padding-top: 14px;
+  }
+  .article-side dl { display: contents; }
+  .article-side dt { margin-top: 0; }
+  .article-side dd { margin: 2px 0 0; }
+  .article-cover-tags { font-size: 10px; padding: 8px 12px; left: 10px; right: 10px; top: 10px; }
 }
 .article-body { font-size: 17px; line-height: 1.7; color: var(--ink); }
 .article-body > *:first-child { margin-top: 0; }
@@ -1009,4 +1064,27 @@ footer { padding: 64px 0 28px; border-top: 1px solid var(--rule); position:relat
 .article-foot {
   display:flex; align-items:center; gap:14px; flex-wrap:wrap;
   margin-top: 44px; padding-top: 28px; border-top: 1px solid var(--rule);
+}
+
+/* ── Шапка: CTA с градиентной обводкой ───────────────────────────────── */
+.topnav .nav-cta {
+  background:
+    linear-gradient(#0a0b0d, #0a0b0d) padding-box,
+    linear-gradient(115deg, #a855f7 0%, #ec4899 35%, #f97316 65%, #3b82f6 100%) border-box;
+  border: 2px solid transparent;
+  border-radius: 999px;
+  padding: 11px 22px;
+  box-shadow:
+    0 0 22px rgba(168, 85, 247, 0.30),
+    0 0 38px rgba(236, 72, 153, 0.22);
+}
+.topnav .nav-cta::before {
+  /* мягкий «sweep» поверх тёмного фона */
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.18), transparent);
+}
+.topnav .nav-cta:hover {
+  transform: translateY(-1px);
+  box-shadow:
+    0 0 28px rgba(168, 85, 247, 0.45),
+    0 0 48px rgba(236, 72, 153, 0.32);
 }

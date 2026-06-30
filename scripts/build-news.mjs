@@ -50,14 +50,36 @@ function firstImg(html = '') {
   return m ? m[1] : '';
 }
 
+// время чтения (мин) по голому тексту
+function readingMinutes(html = '') {
+  const text = String(html).replace(/<[^>]+>/g, ' ');
+  const words = text.split(/\s+/).filter(Boolean).length;
+  return Math.max(1, Math.round(words / 200));
+}
+
+// fmt: dd.mm.yyyy
+function fmtDateShort(iso) {
+  const d = new Date(iso + 'T00:00:00Z');
+  if (isNaN(d)) return iso;
+  const p = n => String(n).padStart(2, '0');
+  return `${p(d.getUTCDate())}.${p(d.getUTCMonth() + 1)}.${d.getUTCFullYear()}`;
+}
+
+// стабильный file-id: 2600 + (порядок от старых к новым)
+function fileStamp(i, total) { return 2600 + (total - i); }
+
 // ── шаблон отдельной новости ────────────────────────────────────────────────
-function articlePage(n) {
+function articlePage(n, ctx = { index: 0, total: 1 }) {
   const url = `${SITE}/news/${n.slug}.html`;
   const cover = n.cover || firstImg(n.bodyHtml) || 'og-share.png';
   const coverAbs = absUrl(cover);
   const desc = n.description || '';
   const tags = Array.isArray(n.tags) ? n.tags : [];
   const tagLine = tags.length ? tags.map(esc).join(' · ') : 'Новости';
+  const tagsBadge = tags.length ? tags.map(esc).join(' · ') : 'НОВОСТИ';
+  const readMin = readingMinutes(n.bodyHtml);
+  const stamp = fileStamp(ctx.index, ctx.total);
+  const author = n.author || 'LAB301';
 
   const ld = {
     '@context': 'https://schema.org',
@@ -125,7 +147,7 @@ function articlePage(n) {
 <link rel="preload" as="image" href="guga.avif" fetchpriority="high">
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap"></noscript>
-<link rel="stylesheet" href="theme.css?v=3">
+<link rel="stylesheet" href="theme.css?v=5">
 <link rel="alternate" type="application/rss+xml" title="Новости LAB301" href="news/rss.xml" />
 <script type="application/ld+json">
 ${JSON.stringify(ld)}
@@ -136,26 +158,37 @@ ${JSON.stringify(crumbs)}
 </head>
 <body data-page="news">
 
-<section class="page-head">
+<section class="page-head article-page">
   <div class="container">
     <div class="crumbs reveal"><a href="index.html">LAB301</a><span class="sep">/</span><a href="news.html">Новости</a><span class="sep">/</span><span class="here">${esc(n.title)}</span></div>
-    <article class="article">
-      <div class="article-meta reveal"><time datetime="${attr(n.date)}">${esc(fmtDateRu(n.date))}</time><span class="sep">·</span><span>${esc(tagLine)}</span></div>
-      <h1 class="article-title reveal">${esc(n.title)}</h1>
-      ${desc ? `<p class="article-lede reveal">${esc(desc)}</p>` : ''}
-      ${n.cover ? `<img class="article-cover reveal" src="${attr(n.cover)}" alt="${attr(n.title)}" loading="eager" decoding="async" />` : ''}
-      <div class="article-body">
+    <div class="article-layout">
+      <aside class="article-side reveal">
+        <dl>
+          <dt>Date</dt><dd><time datetime="${attr(n.date)}">${esc(fmtDateShort(n.date))}</time></dd>
+          <dt>Cat</dt><dd class="break">/ ${esc(n.slug)}</dd>
+          <dt>Read</dt><dd>~${readMin} мин</dd>
+          <dt>Author</dt><dd>${esc(author)}</dd>
+          <dt>File</dt><dd>${stamp} · News</dd>
+        </dl>
+      </aside>
+      <article class="article-main">
+        <div class="article-label reveal">Entry · ${String(stamp).slice(-2)}</div>
+        <h1 class="article-title reveal">${esc(n.title)}</h1>
+        ${desc ? `<p class="article-lede reveal">${esc(desc)}</p>` : ''}
+        ${n.cover ? `<div class="article-cover-wrap reveal"><img class="article-cover" src="${attr(n.cover)}" alt="${attr(n.title)}" loading="eager" decoding="async" /><div class="article-cover-tags">${tagsBadge}</div></div>` : ''}
+        <div class="article-body">
 ${n.bodyHtml || ''}
-      </div>
-      <div class="article-foot reveal">
-        <a class="btn-secondary" href="news.html"><span>← Все новости</span></a>
-        <a class="btn-primary" href="thankyou.html?to=https://t.me/Judgeopenclawbot"><span>Обсудить проект</span><span>→</span></a>
-      </div>
-    </article>
+        </div>
+        <div class="article-foot reveal">
+          <a class="btn-secondary" href="news.html"><span>← Все новости</span></a>
+          <a class="btn-primary" href="thankyou.html?to=https://t.me/Judgeopenclawbot"><span>Обсудить проект</span><span>→</span></a>
+        </div>
+      </article>
+    </div>
   </div>
 </section>
 
-<script src="theme.js?v=3" defer></script>
+<script src="theme.js?v=5" defer></script>
 </body>
 </html>
 `;
@@ -234,7 +267,7 @@ function listPage(items) {
 <link rel="preload" as="image" href="lab301-logo-mobile.avif" fetchpriority="high">
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap"></noscript>
-<link rel="stylesheet" href="theme.css?v=3">
+<link rel="stylesheet" href="theme.css?v=5">
 <link rel="alternate" type="application/rss+xml" title="Новости LAB301" href="news/rss.xml" />
 </head>
 <body data-page="news">
@@ -268,7 +301,7 @@ ${cards}
   </div>
 </section>
 
-<script src="theme.js?v=3" defer></script>
+<script src="theme.js?v=5" defer></script>
 </body>
 </html>
 `;
@@ -336,9 +369,10 @@ async function main() {
 
   // генерируем страницы новостей
   const wantHtml = new Set();
-  for (const n of items) {
+  for (let i = 0; i < items.length; i++) {
+    const n = items[i];
     const out = path.join(NEWS_DIR, `${n.slug}.html`);
-    await fs.writeFile(out, articlePage(n));
+    await fs.writeFile(out, articlePage(n, { index: i, total: items.length }));
     wantHtml.add(`${n.slug}.html`);
   }
 
