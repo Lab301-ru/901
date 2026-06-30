@@ -147,7 +147,7 @@ function articlePage(n, ctx = { index: 0, total: 1 }) {
 <link rel="preload" as="image" href="guga.avif" fetchpriority="high">
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap"></noscript>
-<link rel="stylesheet" href="theme.css?v=4">
+<link rel="stylesheet" href="theme.css?v=5">
 <link rel="alternate" type="application/rss+xml" title="Новости LAB301" href="news/rss.xml" />
 <script type="application/ld+json">
 ${JSON.stringify(ld)}
@@ -188,7 +188,7 @@ ${n.bodyHtml || ''}
   </div>
 </section>
 
-<script src="theme.js?v=3" defer></script>
+<script src="theme.js?v=5" defer></script>
 </body>
 </html>
 `;
@@ -267,7 +267,7 @@ function listPage(items) {
 <link rel="preload" as="image" href="lab301-logo-mobile.avif" fetchpriority="high">
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap"></noscript>
-<link rel="stylesheet" href="theme.css?v=4">
+<link rel="stylesheet" href="theme.css?v=5">
 <link rel="alternate" type="application/rss+xml" title="Новости LAB301" href="news/rss.xml" />
 </head>
 <body data-page="news">
@@ -301,7 +301,7 @@ ${cards}
   </div>
 </section>
 
-<script src="theme.js?v=3" defer></script>
+<script src="theme.js?v=5" defer></script>
 </body>
 </html>
 `;
