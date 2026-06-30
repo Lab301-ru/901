@@ -139,15 +139,15 @@ ${JSON.stringify(crumbs)}
 <section class="page-head">
   <div class="container">
     <div class="crumbs reveal"><a href="index.html">LAB301</a><span class="sep">/</span><a href="news.html">Новости</a><span class="sep">/</span><span class="here">${esc(n.title)}</span></div>
-    <article class="article reveal">
-      <div class="article-meta"><time datetime="${attr(n.date)}">${esc(fmtDateRu(n.date))}</time><span class="sep">·</span><span>${esc(tagLine)}</span></div>
-      <h1 class="article-title">${esc(n.title)}</h1>
-      ${desc ? `<p class="article-lede">${esc(desc)}</p>` : ''}
-      ${n.cover ? `<img class="article-cover" src="${attr(n.cover)}" alt="${attr(n.title)}" loading="eager" decoding="async" />` : ''}
+    <article class="article">
+      <div class="article-meta reveal"><time datetime="${attr(n.date)}">${esc(fmtDateRu(n.date))}</time><span class="sep">·</span><span>${esc(tagLine)}</span></div>
+      <h1 class="article-title reveal">${esc(n.title)}</h1>
+      ${desc ? `<p class="article-lede reveal">${esc(desc)}</p>` : ''}
+      ${n.cover ? `<img class="article-cover reveal" src="${attr(n.cover)}" alt="${attr(n.title)}" loading="eager" decoding="async" />` : ''}
       <div class="article-body">
 ${n.bodyHtml || ''}
       </div>
-      <div class="article-foot">
+      <div class="article-foot reveal">
         <a class="btn-secondary" href="news.html"><span>← Все новости</span></a>
         <a class="btn-primary" href="thankyou.html?to=https://t.me/Judgeopenclawbot"><span>Обсудить проект</span><span>→</span></a>
       </div>
