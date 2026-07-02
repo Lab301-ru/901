@@ -174,6 +174,8 @@
               <li><a href="news.html">${t.news}</a></li>
               <li><a href="privacy.html">Конфиденциальность</a></li>
               <li><a href="faq.html">${t.faq}</a></li>
+              <li><a href="brief-14-days.html">Бриф за 14 дней</a></li>
+              <li><a href="ai-agent-checklist.html">Чек-лист AI-агента</a></li>
             </ul>
           </div>
           <div class="f-col">

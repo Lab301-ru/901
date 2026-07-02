@@ -269,6 +269,32 @@ function listPage(items) {
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap"></noscript>
 <link rel="stylesheet" href="theme.css?v=6">
 <link rel="alternate" type="application/rss+xml" title="Новости LAB301" href="news/rss.xml" />
+<script type="application/ld+json">
+${JSON.stringify({
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'CollectionPage',
+        name: 'Новости LAB301',
+        url: `${SITE}/news.html`,
+        description: 'Новости и обновления студии LAB301: запуски проектов, продукты, технологии и кейсы.',
+        hasPart: items.map(n => ({
+          '@type': 'NewsArticle',
+          headline: n.title,
+          url: `${SITE}/news/${n.slug}.html`,
+          datePublished: n.date
+        }))
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'LAB301', item: `${SITE}/` },
+          { '@type': 'ListItem', position: 2, name: 'Новости', item: `${SITE}/news.html` }
+        ]
+      }
+    ]
+  })}
+</script>
 </head>
 <body data-page="news">
 
