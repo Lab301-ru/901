@@ -138,7 +138,7 @@
         </button>
       </div>
     </nav>
-    <div class="mobile-drawer" id="mobileDrawer" aria-hidden="true">
+    <div class="mobile-drawer" id="mobileDrawer" aria-hidden="true" inert>
       <ul class="drawer-links">${drawerLinks}</ul>
       <div class="drawer-cta">
         <a class="btn-primary" href="thankyou.html?to=https://t.me/Judgeopenclawbot">Заказать сайт <span>→</span></a>
@@ -164,7 +164,7 @@
             <div class="f-stack">OpenAI &middot; Anthropic &middot; Next.js &middot; React.js &middot; Vercel &middot; Figma &middot; n8n &middot; Netlify &middot; Cloudflare &middot; GitHub &middot; GitLab &middot; Render &middot; Supabase &middot; Yandex &middot; Telegram &middot; Bitrix24 &middot; REG.RU &middot; AmoCRM &middot; YooKassa &middot; Tinkoff &middot; VK</div>
           </div>
           <div class="f-col">
-            <h5>${t.fNav}</h5>
+            <h2 class="f-h">${t.fNav}</h2>
             <ul>
               <li><a href="services.html">${t.services}</a></li>
               <li><a href="sites.html">${t.sites}</a></li>
@@ -179,7 +179,7 @@
             </ul>
           </div>
           <div class="f-col">
-            <h5>${t.fSvc}</h5>
+            <h2 class="f-h">${t.fSvc}</h2>
             <ul>
               <li><a href="sites.html">${t.fSvcSite}</a></li>
               <li><a href="ai-assistant.html">${t.fSvcAi}</a></li>
@@ -192,7 +192,7 @@
             </ul>
           </div>
           <div class="f-col">
-            <h5>${t.fLink}</h5>
+            <h2 class="f-h">${t.fLink}</h2>
             <ul>
               <li><a href="thankyou.html?to=https://t.me/yuriybyg">Telegram</a></li>
               <li><a href="https://wa.me/79996708772">WhatsApp</a></li>
@@ -244,6 +244,21 @@
     appendFrag.appendChild(parseHTML('<button class="bg-toggle" aria-label="Сменить фон" title="Тёмный / Чёрный фон"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.5"/><path d="M8 1.5a6.5 6.5 0 0 1 0 13V1.5z" fill="currentColor"/></svg></button>'));
   }
   if (appendFrag.childNodes.length) document.body.appendChild(appendFrag);
+
+  // ── <main> landmark: оборачиваем контент страницы (все top-level секции)
+  // между шапкой и подвалом — для доступности и ИИ-агентов
+  if (!document.querySelector('main')) {
+    const contentNodes = [...document.body.children].filter(
+      el => el.tagName === 'SECTION' || el.tagName === 'ARTICLE'
+    );
+    if (contentNodes.length) {
+      const main = document.createElement('main');
+      main.id = 'main';
+      contentNodes[0].parentNode.insertBefore(main, contentNodes[0]);
+      contentNodes.forEach(n => main.appendChild(n));
+    }
+  }
+
   // shared toggle logic for all .bg-toggle buttons
   const bgToggleHandler = () => {
     const isGrey = root.getAttribute('data-bg') === 'grey';
@@ -346,6 +361,9 @@
       hamburger.classList.toggle('active', isOpen);
       hamburger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
       drawer.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
+      // inert: снимает фокусируемость и убирает из дерева доступности,
+      // когда меню закрыто (иначе ARIA/agent-view ругаются на aria-hidden + фокус)
+      drawer.inert = !isOpen;
       document.body.style.overflow = isOpen ? 'hidden' : '';
     };
     hamburger.addEventListener('click', () => toggleDrawer());

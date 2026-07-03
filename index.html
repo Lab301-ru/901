@@ -73,7 +73,7 @@
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap"></noscript>
 <!-- Main stylesheet (render-blocking by design — ensures no FOUC) -->
-<link rel="stylesheet" href="theme.css?v=6">
+<link rel="stylesheet" href="theme.css?v=7">
 <style>
   /* page-only overrides */
 
@@ -163,7 +163,8 @@
   /* Hero CTA primary: заметнее */
   .hero-cta-row .btn-primary {
     padding: 14px 28px; font-size: 14px;
-    background: #E8202F; box-shadow: 0 0 32px rgba(232,32,47,0.55);
+    /* #DA1F2D vs #fff = 4.98:1 — проходит WCAG AA (было #E8202F = 4.49:1) */
+    background: #DA1F2D; box-shadow: 0 0 32px rgba(218,31,45,0.55);
   }
   /* Ghost-кнопка — тот же размер что primary */
   .hero-cta-row .btn-secondary {
@@ -852,6 +853,6 @@
   </div>
 </section>
 
-<script src="theme.js?v=6" defer></script>
+<script src="theme.js?v=7" defer></script>
 </body>
 </html>
