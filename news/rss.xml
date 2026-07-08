@@ -5,7 +5,14 @@
     <link>https://lab301.ru/news.html</link>
     <description>Новости и обновления студии LAB301</description>
     <language>ru</language>
-    <lastBuildDate>Wed, 08 Jul 2026 16:19:52 GMT</lastBuildDate>
+    <lastBuildDate>Wed, 08 Jul 2026 16:20:20 GMT</lastBuildDate>
+    <item>
+      <title>Автоматизация бизнеса без программиста: что такое n8n</title>
+      <link>https://lab301.ru/news/avtomatizaciya-biznesa-n8n.html</link>
+      <guid isPermaLink="true">https://lab301.ru/news/avtomatizaciya-biznesa-n8n.html</guid>
+      <pubDate>Wed, 08 Jul 2026 09:00:00 GMT</pubDate>
+      <description>Как автоматизировать рутину в малом бизнесе без штатного разработчика: приём заявок, уведомления, отчёты. Разбираем на примерах, что такое n8n и как это работает.</description>
+    </item>
     <item>
       <title>Взлом сайта малого бизнеса: как это происходит и что делать</title>
       <link>https://lab301.ru/news/bezopasnost-sajta-malogo-biznesa.html</link>
