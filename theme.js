@@ -38,7 +38,9 @@
     if (p && NAMES[p]) root.setAttribute('data-palette', p);
     if (d) root.setAttribute('data-density', d);
     if (l === 'en') root.setAttribute('lang', 'en');
-    if (bg === 'grey') root.setAttribute('data-bg', 'grey');
+    // 'light' — светлая тема; по умолчанию тёмно-серая (без атрибута).
+    // Совместимость: старое значение 'grey' = текущий дефолт, атрибут не нужен.
+    if (bg === 'light') root.setAttribute('data-bg', 'light');
   } catch(e){}
 
   // Translation dictionary for chrome + common UI strings
@@ -124,13 +126,13 @@
       </a>
       <ul class="nav-links">${navLinks}</ul>
       <div class="nav-right">
-        <button class="bg-toggle nav-bg-toggle" id="bgToggle" aria-label="Сменить фон" title="Тёмный / Чёрный фон">
+        <button class="bg-toggle nav-bg-toggle" id="bgToggle" aria-label="Сменить фон" title="Тёмный / Светлый фон">
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.5"/><path d="M8 1.5a6.5 6.5 0 0 1 0 13V1.5z" fill="currentColor"/></svg>
         </button>
         <a class="nav-cta" href="thankyou.html?to=https://t.me/Judgeopenclawbot">${t.cta} <span class="arrow">→</span></a>
       </div>
       <div class="nav-mobile-controls">
-        <button class="bg-toggle nav-bg-toggle" aria-label="Сменить фон" title="Тёмный / Чёрный фон">
+        <button class="bg-toggle nav-bg-toggle" aria-label="Сменить фон" title="Тёмный / Светлый фон">
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.5"/><path d="M8 1.5a6.5 6.5 0 0 1 0 13V1.5z" fill="currentColor"/></svg>
         </button>
         <button class="hamburger" id="hamburger" aria-label="${t.menuOpen}" aria-expanded="false">
@@ -161,7 +163,7 @@
               <span>${t.fPowered}</span>
               <img src="image-151.avif" alt="Mikhalych AI" class="f-powered-img" width="1768" height="363" loading="lazy" decoding="async" />
             </div>
-            <div class="f-stack">OpenAI &middot; Anthropic &middot; Next.js &middot; React.js &middot; Vercel &middot; Figma &middot; n8n &middot; Netlify &middot; Cloudflare &middot; GitHub &middot; GitLab &middot; Render &middot; Supabase &middot; Yandex &middot; Telegram &middot; Bitrix24 &middot; REG.RU &middot; AmoCRM &middot; YooKassa &middot; Tinkoff &middot; VK</div>
+            <div class="f-stack">Next.js &middot; React &middot; TypeScript &middot; Tailwind CSS &middot; Node.js &middot; PostgreSQL &middot; Prisma &middot; Auth.js &middot; ЮKassa &middot; Тинькофф &middot; Elasticsearch &middot; Meilisearch &middot; 1С &middot; n8n &middot; Telegram Bot API &middot; Claude API &middot; YandexGPT &middot; GigaChat &middot; Timeweb Cloud &middot; Docker &middot; GitHub Actions &middot; Cloudflare &middot; Sentry &middot; Playwright &middot; Vitest</div>
           </div>
           <div class="f-col">
             <h2 class="f-h">${t.fNav}</h2>
@@ -182,6 +184,7 @@
             <h2 class="f-h">${t.fSvc}</h2>
             <ul>
               <li><a href="sites.html">${t.fSvcSite}</a></li>
+              <li><a href="shops.html">Интернет-магазины B2C/B2B</a></li>
               <li><a href="ai-assistant.html">${t.fSvcAi}</a></li>
               <li><a href="services.html">${t.fSvcAuto}</a></li>
               <li><a href="services.html">${t.fSvcPerf}</a></li>
@@ -241,7 +244,7 @@
   const appendFrag = document.createDocumentFragment();
   if (!hasFooter) appendFrag.appendChild(parseHTML(footer));
   if (!hasBgBtn) {
-    appendFrag.appendChild(parseHTML('<button class="bg-toggle" aria-label="Сменить фон" title="Тёмный / Чёрный фон"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.5"/><path d="M8 1.5a6.5 6.5 0 0 1 0 13V1.5z" fill="currentColor"/></svg></button>'));
+    appendFrag.appendChild(parseHTML('<button class="bg-toggle" aria-label="Сменить фон" title="Тёмный / Светлый фон"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.5"/><path d="M8 1.5a6.5 6.5 0 0 1 0 13V1.5z" fill="currentColor"/></svg></button>'));
   }
   if (appendFrag.childNodes.length) document.body.appendChild(appendFrag);
 
@@ -259,12 +262,12 @@
     }
   }
 
-  // shared toggle logic for all .bg-toggle buttons
+  // shared toggle logic for all .bg-toggle buttons: тёмно-серая ↔ светлая
   const bgToggleHandler = () => {
-    const isGrey = root.getAttribute('data-bg') === 'grey';
-    if (isGrey) { root.removeAttribute('data-bg'); }
-    else { root.setAttribute('data-bg', 'grey'); }
-    try { localStorage.setItem('lab301.bg', isGrey ? '' : 'grey'); } catch(e){}
+    const isLight = root.getAttribute('data-bg') === 'light';
+    if (isLight) { root.removeAttribute('data-bg'); }
+    else { root.setAttribute('data-bg', 'light'); }
+    try { localStorage.setItem('lab301.bg', isLight ? '' : 'light'); } catch(e){}
   };
   document.querySelectorAll('.bg-toggle').forEach(b => b.addEventListener('click', bgToggleHandler));
 
