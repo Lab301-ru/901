@@ -360,6 +360,12 @@
   if (hamburger && drawer) {
     const toggleDrawer = (force) => {
       const isOpen = typeof force === 'boolean' ? force : !drawer.classList.contains('open');
+      // Прижимаем меню вплотную к низу шапки (без белого разрыва) —
+      // считаем реальную нижнюю границу nav на любом устройстве
+      if (isOpen) {
+        const navEl = document.querySelector('nav.topnav');
+        if (navEl) drawer.style.top = Math.round(navEl.getBoundingClientRect().bottom) + 'px';
+      }
       drawer.classList.toggle('open', isOpen);
       hamburger.classList.toggle('active', isOpen);
       hamburger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
