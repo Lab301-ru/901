@@ -147,7 +147,7 @@ function articlePage(n, ctx = { index: 0, total: 1 }) {
 <link rel="preload" as="image" href="guga.avif" fetchpriority="high">
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap"></noscript>
-<link rel="stylesheet" href="theme.css?v=10">
+<link rel="stylesheet" href="theme.css?v=11">
 <link rel="alternate" type="application/rss+xml" title="Новости LAB301" href="news/rss.xml" />
 <script type="application/ld+json">
 ${JSON.stringify(ld)}
@@ -188,7 +188,7 @@ ${n.bodyHtml || ''}
   </div>
 </section>
 
-<script src="theme.js?v=10" defer></script>
+<script src="theme.js?v=11" defer></script>
 </body>
 </html>
 `;
@@ -267,7 +267,7 @@ function listPage(items) {
 <link rel="preload" as="image" href="lab301-logo-mobile.avif" fetchpriority="high">
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap"></noscript>
-<link rel="stylesheet" href="theme.css?v=10">
+<link rel="stylesheet" href="theme.css?v=11">
 <link rel="alternate" type="application/rss+xml" title="Новости LAB301" href="news/rss.xml" />
 <script type="application/ld+json">
 ${JSON.stringify({
@@ -327,7 +327,7 @@ ${cards}
   </div>
 </section>
 
-<script src="theme.js?v=10" defer></script>
+<script src="theme.js?v=11" defer></script>
 </body>
 </html>
 `;
@@ -335,6 +335,11 @@ ${cards}
 
 // ── RSS ─────────────────────────────────────────────────────────────────────
 function rss(items) {
+  // lastBuildDate — детерминированно от самой свежей новости, а НЕ от времени
+  // сборки. Иначе каждый билд менял бы штамп и rss.xml вечно конфликтовал бы
+  // при мёрдже. Теперь файл меняется только когда реально меняются новости.
+  const newest = items.map(n => n.date).filter(Boolean).sort().pop();
+  const buildDate = newest ? rfc822(newest) : new Date(0).toUTCString();
   const entries = items.map(n => `    <item>
       <title>${esc(n.title)}</title>
       <link>${SITE}/news/${esc(n.slug)}.html</link>
@@ -349,7 +354,7 @@ function rss(items) {
     <link>${SITE}/news.html</link>
     <description>Новости и обновления студии LAB301</description>
     <language>ru</language>
-    <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
+    <lastBuildDate>${buildDate}</lastBuildDate>
 ${entries}
   </channel>
 </rss>

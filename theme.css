@@ -606,12 +606,13 @@ footer { padding: 64px 0 28px; border-top: 1px solid var(--rule); position:relat
 [data-bg="light"] {
   --bg:        #ffffff;
   --bg-2:      #f3f5f8;
-  /* панели/поверхности заметно серее белого фона, чтобы карточки-контейнеры
-     выделялись (используются в .mod, .arc-card, .signal-band и т.д.) */
-  --panel:     #eaeef3;
-  --panel-2:   #dfe5ec;
-  --surface:   #e8edf2;
-  --surface-2: #dce2ea;
+  /* панели/поверхности — мягкий голубоватый тон (как у карточки контакта
+     @Judgeopenclawbot), чтобы контейнеры выделялись на белом фоне
+     (используются в .mod, .arc-card, .signal-band, .chan, .side-card и т.д.) */
+  --panel:     #dde7f4;
+  --panel-2:   #cdd9ec;
+  --surface:   #e3ebf7;
+  --surface-2: #d4e0f0;
   --ink:       #0e1116;
   --ink-2:     #3d4653;
   --ink-3:     #6b7480;
