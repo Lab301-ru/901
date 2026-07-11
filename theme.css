@@ -629,23 +629,33 @@ footer { padding: 64px 0 28px; border-top: 1px solid var(--rule); position:relat
 /* фоновые слои — приглушаем для светлого */
 [data-bg="light"] .grain { opacity: 0.10; mix-blend-mode: multiply; }
 [data-bg="light"] .bloom { opacity: 0.35; }
-/* шапка/лента/подвал/дровер: тёмные rgba → светлые */
-[data-bg="light"] .ribbon { background: rgba(255,255,255,0.92); }
-[data-bg="light"] nav.topnav { background: rgba(255,255,255,0.90); }
-[data-bg="light"] .mobile-drawer { background: rgba(255,255,255,0.97); }
-[data-bg="light"] .bg-toggle { box-shadow: 0 4px 16px rgba(0,0,0,.12); }
-/* тёмные плашки-оверлеи на картинках → светлые с тёмным текстом */
-[data-bg="light"] .tag,
+
+/* Шапка (лента + nav + дровер) и подвал остаются ТЁМНО-СЕРЫМИ островами,
+   чтобы логотип и кнопка выделялись. Внутри них — тёмная палитра,
+   поэтому текст/ссылки/иконки светлые, как в тёмной теме. */
+[data-bg="light"] .ribbon,
+[data-bg="light"] nav.topnav,
+[data-bg="light"] .mobile-drawer,
+[data-bg="light"] footer {
+  background: #0d1117;
+  --bg:        #0d1117;
+  --panel:     #161b22;
+  --panel-2:   #21262d;
+  --surface:   #161b22;
+  --ink:       #F2F3F5;
+  --ink-2:     #B6BAC3;
+  --ink-3:     #888E99;
+  --rule:      rgba(255,255,255,0.08);
+  --rule-2:    rgba(255,255,255,0.14);
+  --acc:       #FF3B47;
+  --acc-2:     #FFE5E2;
+  --acc-soft:  rgba(255,59,71,0.14);
+  --acc-glow:  rgba(255,59,71,0.55);
+}
+[data-bg="light"] .mobile-drawer { background: rgba(13,17,23,0.98); }
+/* тёмные плашки-оверлеи на картинках карточек → светлые с тёмным текстом */
 [data-bg="light"] .arc-vis .tag,
-[data-bg="light"] .article-cover-tags { background: rgba(255,255,255,0.78); color: var(--ink); }
-/* CTA-змейка в шапке на светлом — мягкий контур */
-[data-bg="light"] .topnav .nav-cta { background:
-    linear-gradient(#ffffff, #ffffff) padding-box,
-    conic-gradient(from var(--nav-cta-angle),
-      rgba(196,34,58,0.10) 0deg, rgba(196,34,58,0.10) 240deg,
-      #a855f7 280deg, #ec4899 305deg, #f97316 330deg, #3b82f6 355deg,
-      rgba(196,34,58,0.10) 360deg) border-box;
-  color: var(--ink); }
+[data-bg="light"] .article-cover-tags { background: rgba(255,255,255,0.82); color: #0e1116; }
 
 /* ── Background toggle button ── */
 .bg-toggle {
