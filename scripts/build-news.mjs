@@ -335,6 +335,11 @@ ${cards}
 
 // ── RSS ─────────────────────────────────────────────────────────────────────
 function rss(items) {
+  // lastBuildDate — детерминированно от самой свежей новости, а НЕ от времени
+  // сборки. Иначе каждый билд менял бы штамп и rss.xml вечно конфликтовал бы
+  // при мёрдже. Теперь файл меняется только когда реально меняются новости.
+  const newest = items.map(n => n.date).filter(Boolean).sort().pop();
+  const buildDate = newest ? rfc822(newest) : new Date(0).toUTCString();
   const entries = items.map(n => `    <item>
       <title>${esc(n.title)}</title>
       <link>${SITE}/news/${esc(n.slug)}.html</link>
@@ -349,7 +354,7 @@ function rss(items) {
     <link>${SITE}/news.html</link>
     <description>Новости и обновления студии LAB301</description>
     <language>ru</language>
-    <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
+    <lastBuildDate>${buildDate}</lastBuildDate>
 ${entries}
   </channel>
 </rss>
