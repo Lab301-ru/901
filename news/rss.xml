@@ -5,7 +5,14 @@
     <link>https://lab301.ru/news.html</link>
     <description>Новости и обновления студии LAB301</description>
     <language>ru</language>
-    <lastBuildDate>Mon, 13 Jul 2026 09:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 14 Jul 2026 09:00:00 GMT</lastBuildDate>
+    <item>
+      <title>Интеграция сайта с CRM-системой: как подготовиться и избежать ошибок</title>
+      <link>https://lab301.ru/news/integraciya-sajta-s-crm.html</link>
+      <guid isPermaLink="true">https://lab301.ru/news/integraciya-sajta-s-crm.html</guid>
+      <pubDate>Tue, 14 Jul 2026 09:00:00 GMT</pubDate>
+      <description>Хотите объединить сайт с CRM (amoCRM, Bitrix24), но боитесь потерять лиды или переплатить разработчикам? Разбираем пошаговый чек-лист подготовки форм и аналитики.</description>
+    </item>
     <item>
       <title>Как выбрать CRM для малого бизнеса: руководство для предпринимателей</title>
       <link>https://lab301.ru/news/kak-vybrat-crm.html</link>
