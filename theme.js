@@ -34,13 +34,12 @@
     const p = localStorage.getItem('lab301.palette');
     const d = localStorage.getItem('lab301.density');
     const l = localStorage.getItem('lab301.lang');
-    const bg = localStorage.getItem('lab301.bg');
     if (p && NAMES[p]) root.setAttribute('data-palette', p);
     if (d) root.setAttribute('data-density', d);
     if (l === 'en') root.setAttribute('lang', 'en');
-    // 'light' — светлая тема; по умолчанию тёмно-серая (без атрибута).
-    // Совместимость: старое значение 'grey' = текущий дефолт, атрибут не нужен.
-    if (bg === 'light') root.setAttribute('data-bg', 'light');
+    // Тема временно только одна — тёмно-серая (по умолчанию). Светлая тема и
+    // переключатель отключены, поэтому data-bg не выставляем, даже если в
+    // localStorage осталось старое значение 'light'.
   } catch(e){}
 
   // Translation dictionary for chrome + common UI strings
@@ -126,15 +125,9 @@
       </a>
       <ul class="nav-links">${navLinks}</ul>
       <div class="nav-right">
-        <button class="bg-toggle nav-bg-toggle" id="bgToggle" aria-label="Сменить фон" title="Тёмный / Светлый фон">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.5"/><path d="M8 1.5a6.5 6.5 0 0 1 0 13V1.5z" fill="currentColor"/></svg>
-        </button>
         <a class="nav-cta" href="thankyou.html?to=https://t.me/Judgeopenclawbot">${t.cta} <span class="arrow">→</span></a>
       </div>
       <div class="nav-mobile-controls">
-        <button class="bg-toggle nav-bg-toggle" aria-label="Сменить фон" title="Тёмный / Светлый фон">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.5"/><path d="M8 1.5a6.5 6.5 0 0 1 0 13V1.5z" fill="currentColor"/></svg>
-        </button>
         <button class="hamburger" id="hamburger" aria-label="${t.menuOpen}" aria-expanded="false">
           <span></span><span></span><span></span>
         </button>
@@ -221,7 +214,6 @@
   const hasNav    = !!document.querySelector('nav.topnav');
   const hasRibbon = !!document.querySelector('.ribbon');
   const hasFooter = !!document.querySelector('footer');
-  const hasBgBtn  = !!document.querySelector('.bg-toggle:not(.nav-bg-toggle)');
   const isDesktop = window.innerWidth > 768;
 
   // Build everything in detached fragments → single reflow per insertion point
@@ -240,12 +232,9 @@
   }
   if (prependFrag.childNodes.length) document.body.prepend(prependFrag);
 
-  // Append chunk: footer + floating bg toggle
+  // Append chunk: footer
   const appendFrag = document.createDocumentFragment();
   if (!hasFooter) appendFrag.appendChild(parseHTML(footer));
-  if (!hasBgBtn) {
-    appendFrag.appendChild(parseHTML('<button class="bg-toggle" aria-label="Сменить фон" title="Тёмный / Светлый фон"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.5"/><path d="M8 1.5a6.5 6.5 0 0 1 0 13V1.5z" fill="currentColor"/></svg></button>'));
-  }
   if (appendFrag.childNodes.length) document.body.appendChild(appendFrag);
 
   // ── <main> landmark: оборачиваем контент страницы (все top-level секции)
@@ -261,15 +250,6 @@
       contentNodes.forEach(n => main.appendChild(n));
     }
   }
-
-  // shared toggle logic for all .bg-toggle buttons: тёмно-серая ↔ светлая
-  const bgToggleHandler = () => {
-    const isLight = root.getAttribute('data-bg') === 'light';
-    if (isLight) { root.removeAttribute('data-bg'); }
-    else { root.setAttribute('data-bg', 'light'); }
-    try { localStorage.setItem('lab301.bg', isLight ? '' : 'light'); } catch(e){}
-  };
-  document.querySelectorAll('.bg-toggle').forEach(b => b.addEventListener('click', bgToggleHandler));
 
   // ── Footer heart confetti
   const fHeart = document.getElementById('f-heart');
@@ -317,9 +297,13 @@
   }
 
   // ── reveal on scroll
+  // threshold:0 — срабатывает, как только элемент начинает входить в вьюпорт.
+  // ВАЖНО: у .reveal-контейнеров (напр. .arc-grid на странице новостей) высота
+  // растёт с числом карточек; при пороге 0.12 очень высокий блок не мог набрать
+  // 12% видимости (12% его высоты > высоты экрана) и НИКОГДА не показывался.
   const io = new IntersectionObserver(es => {
-    es.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-  }, { threshold: 0.12 });
+    es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+  }, { threshold: 0, rootMargin: '0px 0px -8% 0px' });
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
   // ── Price coloring: digits green, ₽ / /мес white
