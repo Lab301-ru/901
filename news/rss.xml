@@ -5,7 +5,14 @@
     <link>https://lab301.ru/news.html</link>
     <description>Новости и обновления студии LAB301</description>
     <language>ru</language>
-    <lastBuildDate>Sun, 26 Jul 2026 09:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Mon, 27 Jul 2026 09:00:00 GMT</lastBuildDate>
+    <item>
+      <title>Интеграция сайта с 1С: зачем нужна и как работает</title>
+      <link>https://lab301.ru/news/integraciya-sajta-s-1c.html</link>
+      <guid isPermaLink="true">https://lab301.ru/news/integraciya-sajta-s-1c.html</guid>
+      <pubDate>Mon, 27 Jul 2026 09:00:00 GMT</pubDate>
+      <description>Товары и остатки приходится обновлять на сайте вручную? Разбираем, как работает интеграция сайта с 1С, что она даёт бизнесу и сколько стоит настройка.</description>
+    </item>
     <item>
       <title>Попап-окна на сайте: раздражают или увеличивают заявки</title>
       <link>https://lab301.ru/news/popap-okna-na-sajte.html</link>
