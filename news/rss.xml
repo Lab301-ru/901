@@ -5,7 +5,14 @@
     <link>https://lab301.ru/news.html</link>
     <description>Новости и обновления студии LAB301</description>
     <language>ru</language>
-    <lastBuildDate>Mon, 27 Jul 2026 09:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 28 Jul 2026 09:00:00 GMT</lastBuildDate>
+    <item>
+      <title>Интеграция с доставкой на сайте: зачем нужна в 2026</title>
+      <link>https://lab301.ru/news/integraciya-s-dostavkoj.html</link>
+      <guid isPermaLink="true">https://lab301.ru/news/integraciya-s-dostavkoj.html</guid>
+      <pubDate>Tue, 28 Jul 2026 09:00:00 GMT</pubDate>
+      <description>Клиент спрашивает &quot;а как забрать заказ&quot; в переписке вместо оформления на сайте? Разбираем, как интеграция с СДЭК, Яндекс Доставкой и другими службами решает это.</description>
+    </item>
     <item>
       <title>Интеграция сайта с 1С: зачем нужна и как работает</title>
       <link>https://lab301.ru/news/integraciya-sajta-s-1c.html</link>
