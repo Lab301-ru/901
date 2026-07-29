@@ -5,7 +5,14 @@
     <link>https://lab301.ru/news.html</link>
     <description>Новости и обновления студии LAB301</description>
     <language>ru</language>
-    <lastBuildDate>Tue, 28 Jul 2026 09:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Wed, 29 Jul 2026 09:00:00 GMT</lastBuildDate>
+    <item>
+      <title>Аудит сайта: что входит и зачем нужен перед доработкой</title>
+      <link>https://lab301.ru/news/audit-sajta-chto-vhodit.html</link>
+      <guid isPermaLink="true">https://lab301.ru/news/audit-sajta-chto-vhodit.html</guid>
+      <pubDate>Wed, 29 Jul 2026 09:00:00 GMT</pubDate>
+      <description>Прежде чем менять дизайн или переписывать тексты, полезно понять, что именно не работает. Разбираем, что входит в аудит сайта и как он экономит бюджет.</description>
+    </item>
     <item>
       <title>Интеграция с доставкой на сайте: зачем нужна в 2026</title>
       <link>https://lab301.ru/news/integraciya-s-dostavkoj.html</link>
