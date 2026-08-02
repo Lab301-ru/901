@@ -1,0 +1,46 @@
+{
+  "name": "LAB301",
+  "origin": "https://lab301.ru",
+  "seoDefaults": {
+    "titleTemplate": "%pageTitle% — Новости LAB301",
+    "metaDescription": "LAB301 — сайты, AI-агенты и автоматизации. Запуск за 14 дней. Михалыч на связи.",
+    "ogImage": "/og-share.png",
+    "publisherLogo": "/lab301-logo.png",
+    "ogType": "article",
+    "schemaType": "NewsArticle",
+    "ogLocale": "ru_RU",
+    "twitterCard": "summary_large_image",
+    "robotsIndex": true,
+    "robotsFollow": true,
+    "organizationSchema": {
+      "name": "LAB301",
+      "url": "https://lab301.ru",
+      "logo": "https://lab301.ru/lab301-logo.png",
+      "telephone": "+79996708772",
+      "email": "lab.301@ya.ru",
+      "areaServed": "Russia",
+      "description": "Лаборатория, которая собирает сайты, AI-агентов и автоматизации для роста бизнеса."
+    },
+    "socialLinks": {
+      "telegram": "https://t.me/yuriybyg"
+    },
+    "aiDirectivesDefault": {
+      "allowAiOverview": true,
+      "allowGenerativeAnswers": true,
+      "allowModelTraining": true,
+      "allowedAiCrawlers": [
+        "GPTBot",
+        "OAI-SearchBot",
+        "ChatGPT-User",
+        "Google-Extended",
+        "ClaudeBot",
+        "anthropic-ai",
+        "PerplexityBot",
+        "Amazonbot",
+        "Applebot-Extended",
+        "YandexBot"
+      ],
+      "disallowedAiCrawlers": []
+    }
+  }
+}

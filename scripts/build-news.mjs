@@ -10,12 +10,26 @@
 import { promises as fs } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { createRequire } from 'node:module';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
 const DATA_DIR = path.join(ROOT, 'news', 'data');
 const NEWS_DIR = path.join(ROOT, 'news');
 const SITE = 'https://lab301.ru';
+
+// SEO-модуль (UMD): те же чистые функции, что и в админке, — значит превью
+// в панели и то, что реально попадает в <head>, не могут разойтись.
+const require = createRequire(import.meta.url);
+const SeoApp = require('../admin/seo/application.js');
+
+// Глобальные SEO-настройки сайта; если файла нет — работаем на дефолтах.
+let SITE_CFG = { name: 'LAB301', origin: SITE };
+async function loadSiteCfg() {
+  try {
+    SITE_CFG = JSON.parse(await fs.readFile(path.join(ROOT, 'seo', 'site.json'), 'utf8'));
+  } catch { console.warn('seo/site.json не найден — беру значения по умолчанию'); }
+}
 
 const MONTHS_RU = ['января','февраля','марта','апреля','мая','июня','июля',
   'августа','сентября','октября','ноября','декабря'];
@@ -81,30 +95,10 @@ function articlePage(n, ctx = { index: 0, total: 1 }) {
   const stamp = fileStamp(ctx.index, ctx.total);
   const author = n.author || 'LAB301';
 
-  const ld = {
-    '@context': 'https://schema.org',
-    '@type': 'NewsArticle',
-    headline: n.title,
-    description: desc,
-    image: [coverAbs],
-    datePublished: n.date,
-    dateModified: n.updated || n.date,
-    author: { '@type': 'Organization', name: n.author || 'LAB301', url: SITE },
-    publisher: {
-      '@type': 'Organization', name: 'LAB301',
-      logo: { '@type': 'ImageObject', url: `${SITE}/lab301-logo.png` }
-    },
-    mainEntityOfPage: { '@type': 'WebPage', '@id': url }
-  };
-  const crumbs = {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'LAB301', item: SITE + '/' },
-      { '@type': 'ListItem', position: 2, name: 'Новости', item: SITE + '/news.html' },
-      { '@type': 'ListItem', position: 3, name: n.title, item: url }
-    ]
-  };
+  // Весь SEO-блок <head> (title, description, canonical, robots, OG, Twitter,
+  // JSON-LD, hreflang, произвольные теги) собирает SEO-модуль с наследованием
+  // от seo/site.json. Пустое поле страницы → значение по умолчанию.
+  const seoHead = SeoApp.generateHead({ ...n, dateModified: n.updated || n.date }, SITE_CFG);
 
   return `<!DOCTYPE html>
 <html lang="ru" data-palette="signal" data-density="comfortable">
@@ -112,29 +106,10 @@ function articlePage(n, ctx = { index: 0, total: 1 }) {
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <base href="/" />
-<title>${esc(n.title)} — Новости LAB301</title>
-<meta name="description" content="${attr(desc)}" />
-<link rel="canonical" href="${url}" />
 <meta name="theme-color" content="#0A0B0D" />
-<meta name="robots" content="index, follow" />
 
-<!-- Open Graph -->
-<meta property="og:title" content="${attr(n.title)}" />
-<meta property="og:description" content="${attr(desc)}" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="${url}" />
-<meta property="og:image" content="${attr(coverAbs)}" />
-<meta property="og:locale" content="ru_RU" />
-<meta property="og:site_name" content="LAB301" />
-<meta property="article:published_time" content="${attr(n.date)}" />
-<meta property="article:modified_time" content="${attr(n.updated || n.date)}" />
-
-<!-- Twitter Card -->
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="${attr(n.title)}" />
-<meta name="twitter:description" content="${attr(desc)}" />
-<meta name="twitter:image" content="${attr(coverAbs)}" />
-
+<!-- SEO: генерируется модулем admin/seo (наследование от seo/site.json) -->
+${seoHead}
 <!-- Favicons -->
 <link rel="icon" type="image/x-icon" href="favicon.ico" />
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
@@ -149,12 +124,6 @@ function articlePage(n, ctx = { index: 0, total: 1 }) {
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap"></noscript>
 <link rel="stylesheet" href="theme.css?v=12">
 <link rel="alternate" type="application/rss+xml" title="Новости LAB301" href="news/rss.xml" />
-<script type="application/ld+json">
-${JSON.stringify(ld)}
-</script>
-<script type="application/ld+json">
-${JSON.stringify(crumbs)}
-</script>
 </head>
 <body data-page="news">
 
@@ -368,10 +337,21 @@ async function updateSitemap(items) {
   try { xml = await fs.readFile(file, 'utf8'); }
   catch { console.warn('sitemap.xml не найден — пропускаю'); return; }
 
+  // Настройки sitemap берём из SEO-модуля: страницу можно исключить из карты
+  // (sitemapInclude / includeInSitemap / robotsIndex) и задать priority/changefreq.
+  const entries = [];
+  for (const n of items) {
+    const r = SeoApp.resolveSeo({ ...n, dateModified: n.updated || n.date }, SITE_CFG);
+    if (!r.sitemap.include) continue;
+    entries.push(`  <url>\n    <loc>${SITE}/news/${esc(n.slug)}.html</loc>\n` +
+      `    <lastmod>${esc(r.sitemap.lastmod || n.updated || n.date)}</lastmod>\n` +
+      `    <changefreq>${esc(r.sitemap.changefreq)}</changefreq>\n` +
+      `    <priority>${esc(String(r.sitemap.priority))}</priority>\n  </url>`);
+  }
+
   const block = ['  <!-- NEWS:START -->',
     `  <url>\n    <loc>${SITE}/news.html</loc>\n    <changefreq>daily</changefreq>\n    <priority>0.8</priority>\n  </url>`,
-    ...items.map(n =>
-      `  <url>\n    <loc>${SITE}/news/${esc(n.slug)}.html</loc>\n    <lastmod>${esc(n.updated || n.date)}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.6</priority>\n  </url>`),
+    ...entries,
     '  <!-- NEWS:END -->'].join('\n');
 
   if (xml.includes('<!-- NEWS:START -->') && xml.includes('<!-- NEWS:END -->')) {
@@ -382,8 +362,35 @@ async function updateSitemap(items) {
   await fs.writeFile(file, xml);
 }
 
+// ── robots.txt из глобальных настроек ───────────────────────────────────────
+async function updateRobots() {
+  const ai = (SITE_CFG.seoDefaults || {}).aiDirectivesDefault;
+  if (!ai) return; // нет AI-директив — не трогаем существующий файл
+  await fs.writeFile(path.join(ROOT, 'robots.txt'), SeoApp.robotsTxt(SITE_CFG, ai));
+}
+
+// ── страницы-редиректы ──────────────────────────────────────────────────────
+// На GitHub Pages нет серверных 301, поэтому переадресация — meta refresh
+// + canonical + JS (Google трактует такую связку как постоянный редирект).
+async function writeRedirects() {
+  let rules = [];
+  try {
+    rules = JSON.parse(await fs.readFile(path.join(ROOT, 'seo', 'redirects.json'), 'utf8'));
+  } catch { return; }
+  if (!Array.isArray(rules) || !rules.length) return;
+  for (const rule of rules) {
+    const rel = String(rule.fromPath || '').replace(/^\/+|\/+$/g, '');
+    if (!rel) continue;
+    const out = path.join(ROOT, rel, 'index.html');
+    await fs.mkdir(path.dirname(out), { recursive: true });
+    await fs.writeFile(out, SeoApp.redirectPageHtml(rule, SITE_CFG));
+    console.log(`Редирект: /${rel} → ${rule.toPath}`);
+  }
+}
+
 // ── main ────────────────────────────────────────────────────────────────────
 async function main() {
+  await loadSiteCfg();
   await fs.mkdir(DATA_DIR, { recursive: true });
   const files = (await fs.readdir(DATA_DIR)).filter(f => f.endsWith('.json'));
   const items = [];
@@ -425,8 +432,10 @@ async function main() {
   await fs.writeFile(path.join(NEWS_DIR, 'index.json'), JSON.stringify(index, null, 2) + '\n');
   await fs.writeFile(path.join(NEWS_DIR, 'rss.xml'), rss(items));
   await updateSitemap(items);
+  await updateRobots();
+  await writeRedirects();
 
-  console.log(`Готово: ${items.length} новост(ь/и/ей) → news.html, news/*.html, index.json, rss.xml, sitemap.xml`);
+  console.log(`Готово: ${items.length} новост(ь/и/ей) → news.html, news/*.html, index.json, rss.xml, sitemap.xml, robots.txt`);
 }
 
 main().catch(e => { console.error(e); process.exit(1); });
