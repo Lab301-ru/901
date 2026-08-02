@@ -1,0 +1,1994 @@
+[
+  {
+    "slug": "",
+    "field": "socialLinksOverride.telegram",
+    "oldValue": "https://t.me/yurybyg",
+    "newValue": "https://t.me/yuriybyg",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:47:49.460Z"
+  },
+  {
+    "slug": "",
+    "field": "socialLinksOverride.telegram",
+    "oldValue": "https://t.me/yuryby",
+    "newValue": "https://t.me/yurybyg",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:47:30.091Z"
+  },
+  {
+    "slug": "",
+    "field": "socialLinksOverride.telegram",
+    "oldValue": "https://t.me/yuryb",
+    "newValue": "https://t.me/yuryby",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:47:29.576Z"
+  },
+  {
+    "slug": "",
+    "field": "socialLinksOverride.telegram",
+    "oldValue": "https://t.me/yury",
+    "newValue": "https://t.me/yuryb",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:47:29.436Z"
+  },
+  {
+    "slug": "",
+    "field": "socialLinksOverride.telegram",
+    "oldValue": "https://t.me/yur",
+    "newValue": "https://t.me/yury",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:47:28.380Z"
+  },
+  {
+    "slug": "",
+    "field": "socialLinksOverride.telegram",
+    "oldValue": "https://t.me/yuri",
+    "newValue": "https://t.me/yur",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:47:27.822Z"
+  },
+  {
+    "slug": "",
+    "field": "socialLinksOverride.telegram",
+    "oldValue": "https://t.me/yur",
+    "newValue": "https://t.me/yuri",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:47:26.588Z"
+  },
+  {
+    "slug": "",
+    "field": "socialLinksOverride.telegram",
+    "oldValue": "https://t.me/yu",
+    "newValue": "https://t.me/yur",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:47:26.237Z"
+  },
+  {
+    "slug": "",
+    "field": "socialLinksOverride.telegram",
+    "oldValue": "https://t.me/y",
+    "newValue": "https://t.me/yu",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:47:24.782Z"
+  },
+  {
+    "slug": "",
+    "field": "socialLinksOverride.telegram",
+    "oldValue": "https://t.me/",
+    "newValue": "https://t.me/y",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:47:24.501Z"
+  },
+  {
+    "slug": "",
+    "field": "socialLinksOverride.telegram",
+    "oldValue": "https://t.me",
+    "newValue": "https://t.me/",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:47:23.015Z"
+  },
+  {
+    "slug": "",
+    "field": "socialLinksOverride.telegram",
+    "oldValue": "https://t.m",
+    "newValue": "https://t.me",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:47:22.020Z"
+  },
+  {
+    "slug": "",
+    "field": "socialLinksOverride.telegram",
+    "oldValue": "https://t.",
+    "newValue": "https://t.m",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:47:21.959Z"
+  },
+  {
+    "slug": "",
+    "field": "socialLinksOverride.telegram",
+    "oldValue": "https://t",
+    "newValue": "https://t.",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:47:21.439Z"
+  },
+  {
+    "slug": "",
+    "field": "socialLinksOverride.telegram",
+    "oldValue": "https://",
+    "newValue": "https://t",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:47:21.003Z"
+  },
+  {
+    "slug": "",
+    "field": "socialLinksOverride.telegram",
+    "newValue": "https://",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:47:19.297Z"
+  },
+  {
+    "slug": "",
+    "field": "localBusiness.email",
+    "oldValue": "lab.301@ya.r",
+    "newValue": "lab.301@ya.ru",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:46:55.804Z"
+  },
+  {
+    "slug": "",
+    "field": "localBusiness.email",
+    "oldValue": "lab.301@ya.",
+    "newValue": "lab.301@ya.r",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:46:55.627Z"
+  },
+  {
+    "slug": "",
+    "field": "localBusiness.email",
+    "oldValue": "lab.301@ya",
+    "newValue": "lab.301@ya.",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:46:55.397Z"
+  },
+  {
+    "slug": "",
+    "field": "localBusiness.email",
+    "oldValue": "lab.301@y",
+    "newValue": "lab.301@ya",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:46:54.229Z"
+  },
+  {
+    "slug": "",
+    "field": "localBusiness.email",
+    "oldValue": "lab.301@",
+    "newValue": "lab.301@y",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:46:54.208Z"
+  },
+  {
+    "slug": "",
+    "field": "localBusiness.email",
+    "oldValue": "lab.301",
+    "newValue": "lab.301@",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:46:53.212Z"
+  },
+  {
+    "slug": "",
+    "field": "localBusiness.email",
+    "oldValue": "lab.30",
+    "newValue": "lab.301",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:46:52.220Z"
+  },
+  {
+    "slug": "",
+    "field": "localBusiness.email",
+    "oldValue": "lab.3",
+    "newValue": "lab.30",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:46:52.092Z"
+  },
+  {
+    "slug": "",
+    "field": "localBusiness.email",
+    "oldValue": "lab.",
+    "newValue": "lab.3",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:46:51.782Z"
+  },
+  {
+    "slug": "",
+    "field": "localBusiness.email",
+    "oldValue": "lab",
+    "newValue": "lab.",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:46:50.888Z"
+  },
+  {
+    "slug": "",
+    "field": "localBusiness.email",
+    "oldValue": "la",
+    "newValue": "lab",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:46:50.063Z"
+  },
+  {
+    "slug": "",
+    "field": "localBusiness.email",
+    "oldValue": "l",
+    "newValue": "la",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:46:47.209Z"
+  },
+  {
+    "slug": "",
+    "field": "localBusiness.email",
+    "newValue": "l",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:46:46.872Z"
+  },
+  {
+    "slug": "",
+    "field": "authorName",
+    "oldValue": "LAB30",
+    "newValue": "LAB301",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:46:36.430Z"
+  },
+  {
+    "slug": "",
+    "field": "authorName",
+    "oldValue": "LAB3",
+    "newValue": "LAB30",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:46:36.337Z"
+  },
+  {
+    "slug": "",
+    "field": "authorName",
+    "oldValue": "LAB",
+    "newValue": "LAB3",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:46:36.170Z"
+  },
+  {
+    "slug": "",
+    "field": "authorName",
+    "oldValue": "LA",
+    "newValue": "LAB",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:46:35.643Z"
+  },
+  {
+    "slug": "",
+    "field": "authorName",
+    "oldValue": "L",
+    "newValue": "LA",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:46:35.236Z"
+  },
+  {
+    "slug": "",
+    "field": "authorName",
+    "oldValue": "",
+    "newValue": "L",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:46:35.000Z"
+  },
+  {
+    "slug": "",
+    "field": "authorName",
+    "oldValue": "Л",
+    "newValue": "",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:46:33.990Z"
+  },
+  {
+    "slug": "",
+    "field": "authorName",
+    "oldValue": "Ла",
+    "newValue": "Л",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:46:33.798Z"
+  },
+  {
+    "slug": "",
+    "field": "authorName",
+    "oldValue": "Л",
+    "newValue": "Ла",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:46:33.068Z"
+  },
+  {
+    "slug": "",
+    "field": "authorName",
+    "oldValue": "",
+    "newValue": "Л",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:46:32.470Z"
+  },
+  {
+    "slug": "",
+    "field": "sitemapChangeFreq",
+    "oldValue": "monthly",
+    "newValue": "daily",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:46:05.999Z"
+  },
+  {
+    "slug": "",
+    "field": "schemaData",
+    "oldValue": {
+      "name": "",
+      "description": "Заказать сайт под ключ в LAB301. Создаем лендинги, многостраничные сайты, интернет-магазины, сайты для малого бизнеса, отраслевые сайты, ИИ-агентов.",
+      "serviceType": "С"
+    },
+    "newValue": {
+      "name": "",
+      "description": "Заказать сайт под ключ в LAB301. Создаем лендинги, многостраничные сайты, интернет-магазины, сайты для малого бизнеса, отраслевые сайты, ИИ-агентов.",
+      "serviceType": ""
+    },
+    "user": "admin",
+    "createdAt": "2026-08-02T20:45:30.105Z"
+  },
+  {
+    "slug": "",
+    "field": "schemaData",
+    "oldValue": {
+      "name": "",
+      "description": "Заказать сайт под ключ в LAB301. Создаем лендинги, многостраничные сайты, интернет-магазины, сайты для малого бизнеса, отраслевые сайты, ИИ-агентов."
+    },
+    "newValue": {
+      "name": "",
+      "description": "Заказать сайт под ключ в LAB301. Создаем лендинги, многостраничные сайты, интернет-магазины, сайты для малого бизнеса, отраслевые сайты, ИИ-агентов.",
+      "serviceType": "С"
+    },
+    "user": "admin",
+    "createdAt": "2026-08-02T20:45:26.995Z"
+  },
+  {
+    "slug": "",
+    "field": "schemaData",
+    "oldValue": {
+      "name": "Заказать сайт под ключ",
+      "description": "Сайты под ключ в LAB301. Создаем лендинги, многостраничные сайты, интернет-магазины, сайты для малого бизнеса, отраслевые сайты, ИИ-агентов.",
+      "providerName": ""
+    },
+    "newValue": {
+      "name": "",
+      "description": "Заказать сайт под ключ в LAB301. Создаем лендинги, многостраничные сайты, интернет-магазины, сайты для малого бизнеса, отраслевые сайты, ИИ-агентов."
+    },
+    "user": "admin",
+    "createdAt": "2026-08-02T20:45:09.389Z"
+  },
+  {
+    "slug": "",
+    "field": "schemaData",
+    "oldValue": {
+      "name": "Заказать сайт под ключ",
+      "description": "Сайты под ключ в LAB301. Создаем лендинги, многостраничные сайты, интернет-магазины, сайты для малого бизнеса, отраслевые сайты, ИИ-агентов.",
+      "providerName": "Ст"
+    },
+    "newValue": {
+      "name": "Заказать сайт под ключ",
+      "description": "Сайты под ключ в LAB301. Создаем лендинги, многостраничные сайты, интернет-магазины, сайты для малого бизнеса, отраслевые сайты, ИИ-агентов.",
+      "providerName": ""
+    },
+    "user": "admin",
+    "createdAt": "2026-08-02T20:45:03.073Z"
+  },
+  {
+    "slug": "",
+    "field": "schemaData",
+    "oldValue": {
+      "name": "Заказать сайт под ключ",
+      "description": "Сайты под ключ в LAB301. Создаем лендинги, многостраничные сайты, интернет-магазины, сайты для малого бизнеса, отраслевые сайты, ИИ-агентов.",
+      "providerName": "Ста"
+    },
+    "newValue": {
+      "name": "Заказать сайт под ключ",
+      "description": "Сайты под ключ в LAB301. Создаем лендинги, многостраничные сайты, интернет-магазины, сайты для малого бизнеса, отраслевые сайты, ИИ-агентов.",
+      "providerName": "Ст"
+    },
+    "user": "admin",
+    "createdAt": "2026-08-02T20:45:01.105Z"
+  },
+  {
+    "slug": "",
+    "field": "schemaData",
+    "oldValue": {
+      "name": "Заказать сайт под ключ",
+      "description": "Сайты под ключ в LAB301. Создаем лендинги, многостраничные сайты, интернет-магазины, сайты для малого бизнеса, отраслевые сайты, ИИ-агентов.",
+      "providerName": "Ст"
+    },
+    "newValue": {
+      "name": "Заказать сайт под ключ",
+      "description": "Сайты под ключ в LAB301. Создаем лендинги, многостраничные сайты, интернет-магазины, сайты для малого бизнеса, отраслевые сайты, ИИ-агентов.",
+      "providerName": "Ста"
+    },
+    "user": "admin",
+    "createdAt": "2026-08-02T20:44:58.360Z"
+  },
+  {
+    "slug": "",
+    "field": "schemaData",
+    "oldValue": {
+      "name": "Заказать сайт под ключ",
+      "description": "Сайты под ключ в LAB301. Создаем лендинги, многостраничные сайты, интернет-магазины, сайты для малого бизнеса, отраслевые сайты, ИИ-агентов.",
+      "providerName": "С"
+    },
+    "newValue": {
+      "name": "Заказать сайт под ключ",
+      "description": "Сайты под ключ в LAB301. Создаем лендинги, многостраничные сайты, интернет-магазины, сайты для малого бизнеса, отраслевые сайты, ИИ-агентов.",
+      "providerName": "Ст"
+    },
+    "user": "admin",
+    "createdAt": "2026-08-02T20:44:55.722Z"
+  },
+  {
+    "slug": "",
+    "field": "schemaData",
+    "oldValue": {
+      "name": "Заказать сайт под ключ",
+      "description": "Сайты под ключ в LAB301. Создаем лендинги, многостраничные сайты, интернет-магазины, сайты для малого бизнеса, отраслевые сайты, ИИ-агентов."
+    },
+    "newValue": {
+      "name": "Заказать сайт под ключ",
+      "description": "Сайты под ключ в LAB301. Создаем лендинги, многостраничные сайты, интернет-магазины, сайты для малого бизнеса, отраслевые сайты, ИИ-агентов.",
+      "providerName": "С"
+    },
+    "user": "admin",
+    "createdAt": "2026-08-02T20:44:52.039Z"
+  },
+  {
+    "slug": "",
+    "field": "schemaData",
+    "oldValue": {
+      "name": "Заказать сайт под ключ"
+    },
+    "newValue": {
+      "name": "Заказать сайт под ключ",
+      "description": "Сайты под ключ в LAB301. Создаем лендинги, многостраничные сайты, интернет-магазины, сайты для малого бизнеса, отраслевые сайты, ИИ-агентов."
+    },
+    "user": "admin",
+    "createdAt": "2026-08-02T20:44:41.403Z"
+  },
+  {
+    "slug": "",
+    "field": "ogTitle",
+    "oldValue": "Заказать айт под ключ - студия разработки сайтов LAB301",
+    "newValue": "Заказать сайт под ключ - студия разработки сайтов LAB301",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:44:23.503Z"
+  },
+  {
+    "slug": "",
+    "field": "ogTitle",
+    "oldValue": "Заказатьайт под ключ - студия разработки сайтов LAB301",
+    "newValue": "Заказать айт под ключ - студия разработки сайтов LAB301",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:44:23.181Z"
+  },
+  {
+    "slug": "",
+    "field": "ogTitle",
+    "oldValue": "Заказатайт под ключ - студия разработки сайтов LAB301",
+    "newValue": "Заказатьайт под ключ - студия разработки сайтов LAB301",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:44:23.002Z"
+  },
+  {
+    "slug": "",
+    "field": "ogTitle",
+    "oldValue": "Заказаайт под ключ - студия разработки сайтов LAB301",
+    "newValue": "Заказатайт под ключ - студия разработки сайтов LAB301",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:44:22.894Z"
+  },
+  {
+    "slug": "",
+    "field": "ogTitle",
+    "oldValue": "Заказайт под ключ - студия разработки сайтов LAB301",
+    "newValue": "Заказаайт под ключ - студия разработки сайтов LAB301",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:44:22.623Z"
+  },
+  {
+    "slug": "",
+    "field": "ogTitle",
+    "oldValue": "Закаайт под ключ - студия разработки сайтов LAB301",
+    "newValue": "Заказайт под ключ - студия разработки сайтов LAB301",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:44:22.543Z"
+  },
+  {
+    "slug": "",
+    "field": "ogTitle",
+    "oldValue": "Закайт под ключ - студия разработки сайтов LAB301",
+    "newValue": "Закаайт под ключ - студия разработки сайтов LAB301",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:44:22.288Z"
+  },
+  {
+    "slug": "",
+    "field": "ogTitle",
+    "oldValue": "Заайт под ключ - студия разработки сайтов LAB301",
+    "newValue": "Закайт под ключ - студия разработки сайтов LAB301",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:44:22.038Z"
+  },
+  {
+    "slug": "",
+    "field": "ogTitle",
+    "oldValue": "Зайт под ключ - студия разработки сайтов LAB301",
+    "newValue": "Заайт под ключ - студия разработки сайтов LAB301",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:44:21.814Z"
+  },
+  {
+    "slug": "",
+    "field": "ogTitle",
+    "oldValue": "айт под ключ - студия разработки сайтов LAB301",
+    "newValue": "Зайт под ключ - студия разработки сайтов LAB301",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:44:20.918Z"
+  },
+  {
+    "slug": "",
+    "field": "ogTitle",
+    "oldValue": "Сайт под ключ - студия разработки сайтов LAB301",
+    "newValue": "айт под ключ - студия разработки сайтов LAB301",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:44:20.482Z"
+  },
+  {
+    "slug": "",
+    "field": "schemaData",
+    "oldValue": {
+      "name": "Заказат сайт под ключ"
+    },
+    "newValue": {
+      "name": "Заказать сайт под ключ"
+    },
+    "user": "admin",
+    "createdAt": "2026-08-02T20:43:17.557Z"
+  },
+  {
+    "slug": "",
+    "field": "schemaData",
+    "oldValue": {
+      "name": "Заказа сайт под ключ"
+    },
+    "newValue": {
+      "name": "Заказат сайт под ключ"
+    },
+    "user": "admin",
+    "createdAt": "2026-08-02T20:43:13.384Z"
+  },
+  {
+    "slug": "",
+    "field": "schemaData",
+    "oldValue": {
+      "name": "аказа сайт под ключ"
+    },
+    "newValue": {
+      "name": "Заказа сайт под ключ"
+    },
+    "user": "admin",
+    "createdAt": "2026-08-02T20:43:09.920Z"
+  },
+  {
+    "slug": "",
+    "field": "schemaData",
+    "oldValue": {
+      "name": "заказа сайт под ключ"
+    },
+    "newValue": {
+      "name": "аказа сайт под ключ"
+    },
+    "user": "admin",
+    "createdAt": "2026-08-02T20:43:06.239Z"
+  },
+  {
+    "slug": "",
+    "field": "schemaData",
+    "oldValue": {
+      "name": "заказа сайта под ключ"
+    },
+    "newValue": {
+      "name": "заказа сайт под ключ"
+    },
+    "user": "admin",
+    "createdAt": "2026-08-02T20:43:03.707Z"
+  },
+  {
+    "slug": "",
+    "field": "schemaData",
+    "oldValue": {
+      "name": "заказ сайта под ключ"
+    },
+    "newValue": {
+      "name": "заказа сайта под ключ"
+    },
+    "user": "admin",
+    "createdAt": "2026-08-02T20:43:00.070Z"
+  },
+  {
+    "slug": "",
+    "field": "schemaData",
+    "oldValue": {
+      "name": ""
+    },
+    "newValue": {
+      "name": "заказ сайта под ключ"
+    },
+    "user": "admin",
+    "createdAt": "2026-08-02T20:42:57.271Z"
+  },
+  {
+    "slug": "",
+    "field": "schemaData",
+    "oldValue": {
+      "name": "Сай"
+    },
+    "newValue": {
+      "name": ""
+    },
+    "user": "admin",
+    "createdAt": "2026-08-02T20:42:44.232Z"
+  },
+  {
+    "slug": "",
+    "field": "schemaData",
+    "oldValue": {
+      "name": "Са"
+    },
+    "newValue": {
+      "name": "Сай"
+    },
+    "user": "admin",
+    "createdAt": "2026-08-02T20:42:40.604Z"
+  },
+  {
+    "slug": "",
+    "field": "schemaData",
+    "oldValue": {
+      "name": "С"
+    },
+    "newValue": {
+      "name": "Са"
+    },
+    "user": "admin",
+    "createdAt": "2026-08-02T20:42:39.557Z"
+  },
+  {
+    "slug": "",
+    "field": "schemaData",
+    "oldValue": {
+      "name": ""
+    },
+    "newValue": {
+      "name": "С"
+    },
+    "user": "admin",
+    "createdAt": "2026-08-02T20:42:37.125Z"
+  },
+  {
+    "slug": "",
+    "field": "schemaData",
+    "oldValue": {
+      "name": "Cf"
+    },
+    "newValue": {
+      "name": ""
+    },
+    "user": "admin",
+    "createdAt": "2026-08-02T20:42:32.841Z"
+  },
+  {
+    "slug": "",
+    "field": "schemaData",
+    "oldValue": {
+      "name": "C"
+    },
+    "newValue": {
+      "name": "Cf"
+    },
+    "user": "admin",
+    "createdAt": "2026-08-02T20:42:29.791Z"
+  },
+  {
+    "slug": "",
+    "field": "schemaData",
+    "oldValue": {},
+    "newValue": {
+      "name": "C"
+    },
+    "user": "admin",
+    "createdAt": "2026-08-02T20:42:27.131Z"
+  },
+  {
+    "slug": "",
+    "field": "schemaType",
+    "oldValue": "",
+    "newValue": "Service",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:42:20.942Z"
+  },
+  {
+    "slug": "",
+    "field": "twitterCard",
+    "oldValue": "",
+    "newValue": "summary_large_image",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:41:52.186Z"
+  },
+  {
+    "slug": "",
+    "field": "ogLocale",
+    "oldValue": "",
+    "newValue": "ru_RU",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:41:31.095Z"
+  },
+  {
+    "slug": "",
+    "field": "ogType",
+    "oldValue": "product",
+    "newValue": "article",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:41:28.648Z"
+  },
+  {
+    "slug": "",
+    "field": "ogType",
+    "oldValue": "",
+    "newValue": "product",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:41:25.906Z"
+  },
+  {
+    "slug": "",
+    "field": "ogImage",
+    "oldValue": "",
+    "newValue": "images/news/zakazat-sayt-pod-klyuch-v-lab301-polnyy-spisok-uslug-studii-msc9megz.webp",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:41:14.643Z"
+  },
+  {
+    "slug": "",
+    "field": "ogDescription",
+    "oldValue": "",
+    "newValue": "Сайты под ключ в LAB301. Создаем лендинги, многостраничные сайты, интернет-магазины, сайты для малого бизнеса, отраслевые сайты, ИИ-агентов.",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:40:59.033Z"
+  },
+  {
+    "slug": "",
+    "field": "ogTitle",
+    "oldValue": "Сайт под ключ - студия разработки сайтов LAB30",
+    "newValue": "Сайт под ключ - студия разработки сайтов LAB301",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:40:37.154Z"
+  },
+  {
+    "slug": "",
+    "field": "ogTitle",
+    "oldValue": "Сайт под ключ - студия разработки сайтов LAB3",
+    "newValue": "Сайт под ключ - студия разработки сайтов LAB30",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:40:37.075Z"
+  },
+  {
+    "slug": "",
+    "field": "ogTitle",
+    "oldValue": "Сайт под ключ - студия разработки сайтов LAB",
+    "newValue": "Сайт под ключ - студия разработки сайтов LAB3",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:40:36.868Z"
+  },
+  {
+    "slug": "",
+    "field": "ogTitle",
+    "oldValue": "Сайт под ключ - студия разработки сайтов LA",
+    "newValue": "Сайт под ключ - студия разработки сайтов LAB",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:40:36.445Z"
+  },
+  {
+    "slug": "",
+    "field": "ogTitle",
+    "oldValue": "Сайт под ключ - студия разработки сайтов L",
+    "newValue": "Сайт под ключ - студия разработки сайтов LA",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:40:36.085Z"
+  },
+  {
+    "slug": "",
+    "field": "ogTitle",
+    "oldValue": "Сайт под ключ - студия разработки сайтов",
+    "newValue": "Сайт под ключ - студия разработки сайтов L",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:40:35.849Z"
+  },
+  {
+    "slug": "",
+    "field": "ogTitle",
+    "oldValue": "Сайт под ключ - студия разработки сайто",
+    "newValue": "Сайт под ключ - студия разработки сайтов",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:40:34.034Z"
+  },
+  {
+    "slug": "",
+    "field": "ogTitle",
+    "oldValue": "Сайт под ключ - студия разработки сайт",
+    "newValue": "Сайт под ключ - студия разработки сайто",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:40:33.926Z"
+  },
+  {
+    "slug": "",
+    "field": "ogTitle",
+    "oldValue": "Сайт под ключ - студия разработки сай",
+    "newValue": "Сайт под ключ - студия разработки сайт",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:40:33.817Z"
+  },
+  {
+    "slug": "",
+    "field": "ogTitle",
+    "oldValue": "Сайт под ключ - студия разработки са",
+    "newValue": "Сайт под ключ - студия разработки сай",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:40:33.679Z"
+  },
+  {
+    "slug": "",
+    "field": "ogTitle",
+    "oldValue": "Сайт под ключ - студия разработки с",
+    "newValue": "Сайт под ключ - студия разработки са",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:40:33.132Z"
+  },
+  {
+    "slug": "",
+    "field": "ogTitle",
+    "oldValue": "Сайт под ключ - студия разработки",
+    "newValue": "Сайт под ключ - студия разработки с",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:40:32.931Z"
+  },
+  {
+    "slug": "",
+    "field": "ogTitle",
+    "oldValue": "Сайт под ключ - студия разработк",
+    "newValue": "Сайт под ключ - студия разработки",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:40:31.926Z"
+  },
+  {
+    "slug": "",
+    "field": "ogTitle",
+    "oldValue": "Сайт под ключ - студия разработ",
+    "newValue": "Сайт под ключ - студия разработк",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:40:31.782Z"
+  },
+  {
+    "slug": "",
+    "field": "ogTitle",
+    "oldValue": "Сайт под ключ - студия разрабо",
+    "newValue": "Сайт под ключ - студия разработ",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:40:31.575Z"
+  },
+  {
+    "slug": "",
+    "field": "ogTitle",
+    "oldValue": "Сайт под ключ - студия разраб",
+    "newValue": "Сайт под ключ - студия разрабо",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:40:31.464Z"
+  },
+  {
+    "slug": "",
+    "field": "ogTitle",
+    "oldValue": "Сайт под ключ - студия разра",
+    "newValue": "Сайт под ключ - студия разраб",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:40:31.215Z"
+  },
+  {
+    "slug": "",
+    "field": "ogTitle",
+    "oldValue": "Сайт под ключ - студия разр",
+    "newValue": "Сайт под ключ - студия разра",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:40:30.754Z"
+  },
+  {
+    "slug": "",
+    "field": "ogTitle",
+    "oldValue": "Сайт под ключ - студия раз",
+    "newValue": "Сайт под ключ - студия разр",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:40:30.648Z"
+  },
+  {
+    "slug": "",
+    "field": "ogTitle",
+    "oldValue": "Сайт под ключ - студия раза",
+    "newValue": "Сайт под ключ - студия раз",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:40:29.820Z"
+  },
+  {
+    "slug": "",
+    "field": "ogTitle",
+    "oldValue": "Сайт под ключ - студия раз",
+    "newValue": "Сайт под ключ - студия раза",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:40:29.057Z"
+  },
+  {
+    "slug": "",
+    "field": "ogTitle",
+    "oldValue": "Сайт под ключ - студия ра",
+    "newValue": "Сайт под ключ - студия раз",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:40:28.793Z"
+  },
+  {
+    "slug": "",
+    "field": "ogTitle",
+    "oldValue": "Сайт под ключ - студия р",
+    "newValue": "Сайт под ключ - студия ра",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:40:27.767Z"
+  },
+  {
+    "slug": "",
+    "field": "ogTitle",
+    "oldValue": "Сайт под ключ - студия",
+    "newValue": "Сайт под ключ - студия р",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:40:27.707Z"
+  },
+  {
+    "slug": "",
+    "field": "ogTitle",
+    "oldValue": "Сайт под ключ - студи",
+    "newValue": "Сайт под ключ - студия",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:40:27.376Z"
+  },
+  {
+    "slug": "",
+    "field": "ogTitle",
+    "oldValue": "Сайт под ключ - студ",
+    "newValue": "Сайт под ключ - студи",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:40:27.259Z"
+  },
+  {
+    "slug": "",
+    "field": "ogTitle",
+    "oldValue": "Сайт под ключ - сту",
+    "newValue": "Сайт под ключ - студ",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:40:26.955Z"
+  },
+  {
+    "slug": "",
+    "field": "ogTitle",
+    "oldValue": "Сайт под ключ - ст",
+    "newValue": "Сайт под ключ - сту",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:40:26.579Z"
+  },
+  {
+    "slug": "",
+    "field": "ogTitle",
+    "oldValue": "Сайт под ключ - с",
+    "newValue": "Сайт под ключ - ст",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:40:26.309Z"
+  },
+  {
+    "slug": "",
+    "field": "ogTitle",
+    "oldValue": "Сайт под ключ -",
+    "newValue": "Сайт под ключ - с",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:40:26.171Z"
+  },
+  {
+    "slug": "",
+    "field": "ogTitle",
+    "oldValue": "Сайт под ключ",
+    "newValue": "Сайт под ключ -",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:40:25.003Z"
+  },
+  {
+    "slug": "",
+    "field": "ogTitle",
+    "oldValue": "Сайт под клю",
+    "newValue": "Сайт под ключ",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:40:20.028Z"
+  },
+  {
+    "slug": "",
+    "field": "ogTitle",
+    "oldValue": "Сайт под кл",
+    "newValue": "Сайт под клю",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:40:19.945Z"
+  },
+  {
+    "slug": "",
+    "field": "ogTitle",
+    "oldValue": "Сайт под к",
+    "newValue": "Сайт под кл",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:40:19.495Z"
+  },
+  {
+    "slug": "",
+    "field": "ogTitle",
+    "oldValue": "Сайт под",
+    "newValue": "Сайт под к",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:40:19.231Z"
+  },
+  {
+    "slug": "",
+    "field": "ogTitle",
+    "oldValue": "Сайт по",
+    "newValue": "Сайт под",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:40:18.762Z"
+  },
+  {
+    "slug": "",
+    "field": "ogTitle",
+    "oldValue": "Сайт п",
+    "newValue": "Сайт по",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:40:17.114Z"
+  },
+  {
+    "slug": "",
+    "field": "ogTitle",
+    "oldValue": "Сайт",
+    "newValue": "Сайт п",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:40:16.896Z"
+  },
+  {
+    "slug": "",
+    "field": "ogTitle",
+    "oldValue": "Сай",
+    "newValue": "Сайт",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:40:15.820Z"
+  },
+  {
+    "slug": "",
+    "field": "ogTitle",
+    "oldValue": "Са",
+    "newValue": "Сай",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:40:15.555Z"
+  },
+  {
+    "slug": "",
+    "field": "ogTitle",
+    "oldValue": "С",
+    "newValue": "Са",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:40:15.353Z"
+  },
+  {
+    "slug": "",
+    "field": "ogTitle",
+    "oldValue": "",
+    "newValue": "С",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:40:15.142Z"
+  },
+  {
+    "slug": "",
+    "field": "ogTitle",
+    "oldValue": "З",
+    "newValue": "",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:40:14.178Z"
+  },
+  {
+    "slug": "",
+    "field": "ogTitle",
+    "oldValue": "За",
+    "newValue": "З",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:40:14.094Z"
+  },
+  {
+    "slug": "",
+    "field": "ogTitle",
+    "oldValue": "Зак",
+    "newValue": "За",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:40:14.013Z"
+  },
+  {
+    "slug": "",
+    "field": "ogTitle",
+    "oldValue": "Зака",
+    "newValue": "Зак",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:40:13.930Z"
+  },
+  {
+    "slug": "",
+    "field": "ogTitle",
+    "oldValue": "Заказ",
+    "newValue": "Зака",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:40:13.845Z"
+  },
+  {
+    "slug": "",
+    "field": "ogTitle",
+    "oldValue": "Заказа",
+    "newValue": "Заказ",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:40:13.345Z"
+  },
+  {
+    "slug": "",
+    "field": "ogTitle",
+    "oldValue": "Заказ",
+    "newValue": "Заказа",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:40:12.097Z"
+  },
+  {
+    "slug": "",
+    "field": "ogTitle",
+    "oldValue": "Зака",
+    "newValue": "Заказ",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:40:11.973Z"
+  },
+  {
+    "slug": "",
+    "field": "ogTitle",
+    "oldValue": "Зак",
+    "newValue": "Зака",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:40:11.824Z"
+  },
+  {
+    "slug": "",
+    "field": "ogTitle",
+    "oldValue": "За",
+    "newValue": "Зак",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:40:11.544Z"
+  },
+  {
+    "slug": "",
+    "field": "ogTitle",
+    "oldValue": "З",
+    "newValue": "За",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:40:11.121Z"
+  },
+  {
+    "slug": "",
+    "field": "ogTitle",
+    "oldValue": "",
+    "newValue": "З",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:40:09.954Z"
+  },
+  {
+    "slug": "",
+    "field": "additionalKeywords",
+    "oldValue": [],
+    "newValue": [
+      "заказать сайт, разработка сайта под ключ, интернет-магазин, лендинг, сайт для бизнеса, веб-студия, разработка сайта, малый бизнес, ai-агент, чат-бот для бизнеса, автоматизация бизнеса, искусственный интеллект для бизнеса, ии-ассистент, нейросеть для бизнеса, telegram-бот для бизнеса, разработка telegram-бота, чат-бот в телеграм, автоматизация в telegram, бот для заявок, бот-помощник, сайт или маркетплейс, нужен ли сайт бизнесу, сайт или авито, продажи через маркетплейсы, собственный сайт vs wildberries, скорость сайта, оптимизация сайта, продвижение в яндексе, конверсия, core web vitals, чат-бот для сайта, виджет на сайте, увеличение конверсии, заявки с сайта, 152-фз, персональные данные, оборотные штрафы, утечка данных, согласие на обработку, безопасность сайта, роскомнадзор, лендинг или многостраничный сайт, многостраничный сайт, seo продвижение, яндекс, поисковое продвижение, трафик на сайт, раздел новостей, поведенческие факторы, конструктор сайтов, tilda, разработка сайта на заказ, no-code, студия разработки, домен ru, 569-фз, госуслуги, регистрация домена, продление домена, сайт компании, безопасность домена, отзывы клиентов, доверие к бизнесу, конверсия сайта, яндекс.бизнес, репутация компании, редизайн сайта, обновление сайта, старый сайт, защита от взлома, вирус на сайте, ssl сертификат, интеграция crm, автоматизация заявок, crm для малого бизнеса, n8n, интеграции, telegram уведомления, рутина в бизнесе, email-маркетинг, рассылки для бизнеса, удержание клиентов, повторные продажи, автоматизация маркетинга, онлайн-оплата, эквайринг, приём платежей на сайте, юkassa, интернет-эквайринг, яндекс.метрика, веб-аналитика, поведение пользователей, продающие тексты, копирайтинг для сайта, тексты для лендинга, структура текста, qr-коды, маркетинг малого бизнеса, офлайн реклама, визитки, меню ресторана, голосовой поиск, алиса, вопросно-ответный контент, личный сайт, персональный бренд, сайт фрилансера, портфолио онлайн, сайт эксперта, карточка товара, продающий контент, электронная коммерция, страница о компании, контент сайта, чат-бот на базе ии, ии для сайта, автоматизация продаж, выбор платформы, стоимость интернет-магазина, цена сайта, интернет-магазин под ключ, юридические документы на сайте, публичная оферта, политика конфиденциальности, документы для интернет-магазина, интеграция с 1с, синхронизация остатков, автоматизация каталога, commerceml, интеграция с доставкой, сдэк, яндекс доставка, расчёт стоимости доставки, аудит сайта, диагностика сайта, seo аудит, доработка сайта, мифы о seo, поисковая оптимизация, ошибки продвижения, выбор подрядчика, как не ошибиться с исполнителем, риски заказа сайта, цена отсутствия сайта, упущенная выгода, стоимость бездействия, привлечение клиентов, попап на сайте, форма захвата лидов, всплывающее окно, генерация заявок, форма обратной связи, звонок или заявка, поведение клиентов"
+    ],
+    "user": "admin",
+    "createdAt": "2026-08-02T20:30:08.226Z"
+  },
+  {
+    "slug": "",
+    "field": "focusKeyword",
+    "oldValue": "Сайт под клю",
+    "newValue": "Сайт под ключ",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:29:17.778Z"
+  },
+  {
+    "slug": "",
+    "field": "focusKeyword",
+    "oldValue": "Сайт под кл",
+    "newValue": "Сайт под клю",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:29:17.695Z"
+  },
+  {
+    "slug": "",
+    "field": "focusKeyword",
+    "oldValue": "Сайт под к",
+    "newValue": "Сайт под кл",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:29:17.430Z"
+  },
+  {
+    "slug": "",
+    "field": "focusKeyword",
+    "oldValue": "Сайт под",
+    "newValue": "Сайт под к",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:29:17.125Z"
+  },
+  {
+    "slug": "",
+    "field": "focusKeyword",
+    "oldValue": "Сайт по",
+    "newValue": "Сайт под",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:29:16.743Z"
+  },
+  {
+    "slug": "",
+    "field": "focusKeyword",
+    "oldValue": "Сайт п",
+    "newValue": "Сайт по",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:29:16.453Z"
+  },
+  {
+    "slug": "",
+    "field": "focusKeyword",
+    "oldValue": "Сайт",
+    "newValue": "Сайт п",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:29:16.278Z"
+  },
+  {
+    "slug": "",
+    "field": "focusKeyword",
+    "oldValue": "Сай",
+    "newValue": "Сайт",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:29:15.344Z"
+  },
+  {
+    "slug": "",
+    "field": "focusKeyword",
+    "oldValue": "Са",
+    "newValue": "Сай",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:29:15.168Z"
+  },
+  {
+    "slug": "",
+    "field": "focusKeyword",
+    "oldValue": "С",
+    "newValue": "Са",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:29:14.623Z"
+  },
+  {
+    "slug": "",
+    "field": "focusKeyword",
+    "oldValue": "",
+    "newValue": "С",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:29:14.393Z"
+  },
+  {
+    "slug": "",
+    "field": "metaDescription",
+    "oldValue": "Делаем сайты под ключ в LAB301. Создаем лендинги, многостраничные сайты, интернет-магазины, сайты для малого бизнеса, отраслевые сайты, ИИ-агентов.",
+    "newValue": "Сайты под ключ в LAB301. Создаем лендинги, многостраничные сайты, интернет-магазины, сайты для малого бизнеса, отраслевые сайты, ИИ-агентов.",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:28:55.993Z"
+  },
+  {
+    "slug": "",
+    "field": "metaDescription",
+    "oldValue": "Делае сайты под ключ в LAB301. Создаем лендинги, многостраничные сайты, интернет-магазины, сайты для малого бизнеса, отраслевые сайты, ИИ-агентов.",
+    "newValue": "Делаем сайты под ключ в LAB301. Создаем лендинги, многостраничные сайты, интернет-магазины, сайты для малого бизнеса, отраслевые сайты, ИИ-агентов.",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:28:51.730Z"
+  },
+  {
+    "slug": "",
+    "field": "metaDescription",
+    "oldValue": "Дела сайты под ключ в LAB301. Создаем лендинги, многостраничные сайты, интернет-магазины, сайты для малого бизнеса, отраслевые сайты, ИИ-агентов.",
+    "newValue": "Делае сайты под ключ в LAB301. Создаем лендинги, многостраничные сайты, интернет-магазины, сайты для малого бизнеса, отраслевые сайты, ИИ-агентов.",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:28:51.474Z"
+  },
+  {
+    "slug": "",
+    "field": "metaDescription",
+    "oldValue": "Дел сайты под ключ в LAB301. Создаем лендинги, многостраничные сайты, интернет-магазины, сайты для малого бизнеса, отраслевые сайты, ИИ-агентов.",
+    "newValue": "Дела сайты под ключ в LAB301. Создаем лендинги, многостраничные сайты, интернет-магазины, сайты для малого бизнеса, отраслевые сайты, ИИ-агентов.",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:28:51.179Z"
+  },
+  {
+    "slug": "",
+    "field": "metaDescription",
+    "oldValue": "Де сайты под ключ в LAB301. Создаем лендинги, многостраничные сайты, интернет-магазины, сайты для малого бизнеса, отраслевые сайты, ИИ-агентов.",
+    "newValue": "Дел сайты под ключ в LAB301. Создаем лендинги, многостраничные сайты, интернет-магазины, сайты для малого бизнеса, отраслевые сайты, ИИ-агентов.",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:28:51.086Z"
+  },
+  {
+    "slug": "",
+    "field": "metaDescription",
+    "oldValue": "Д сайты под ключ в LAB301. Создаем лендинги, многостраничные сайты, интернет-магазины, сайты для малого бизнеса, отраслевые сайты, ИИ-агентов.",
+    "newValue": "Де сайты под ключ в LAB301. Создаем лендинги, многостраничные сайты, интернет-магазины, сайты для малого бизнеса, отраслевые сайты, ИИ-агентов.",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:28:50.874Z"
+  },
+  {
+    "slug": "",
+    "field": "metaDescription",
+    "oldValue": "Создаем сайты под ключ в LAB301. Создаем лендинги, многостраничные сайты, интернет-магазины, сайты для малого бизнеса, отраслевые сайты, ИИ-агентов.",
+    "newValue": "Д сайты под ключ в LAB301. Создаем лендинги, многостраничные сайты, интернет-магазины, сайты для малого бизнеса, отраслевые сайты, ИИ-агентов.",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:28:50.444Z"
+  },
+  {
+    "slug": "",
+    "field": "metaDescription",
+    "oldValue": "Создаем сайт под ключ в LAB301. Создаем лендинги, многостраничные сайты, интернет-магазины, сайты для малого бизнеса, отраслевые сайты, ИИ-агентов.",
+    "newValue": "Создаем сайты под ключ в LAB301. Создаем лендинги, многостраничные сайты, интернет-магазины, сайты для малого бизнеса, отраслевые сайты, ИИ-агентов.",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:28:44.246Z"
+  },
+  {
+    "slug": "",
+    "field": "metaDescription",
+    "oldValue": "Создаемсайт под ключ в LAB301. Создаем лендинги, многостраничные сайты, интернет-магазины, сайты для малого бизнеса, отраслевые сайты, ИИ-агентов.",
+    "newValue": "Создаем сайт под ключ в LAB301. Создаем лендинги, многостраничные сайты, интернет-магазины, сайты для малого бизнеса, отраслевые сайты, ИИ-агентов.",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:28:41.838Z"
+  },
+  {
+    "slug": "",
+    "field": "metaDescription",
+    "oldValue": "Создаесайт под ключ в LAB301. Создаем лендинги, многостраничные сайты, интернет-магазины, сайты для малого бизнеса, отраслевые сайты, ИИ-агентов.",
+    "newValue": "Создаемсайт под ключ в LAB301. Создаем лендинги, многостраничные сайты, интернет-магазины, сайты для малого бизнеса, отраслевые сайты, ИИ-агентов.",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:28:40.374Z"
+  },
+  {
+    "slug": "",
+    "field": "metaDescription",
+    "oldValue": "Создасайт под ключ в LAB301. Создаем лендинги, многостраничные сайты, интернет-магазины, сайты для малого бизнеса, отраслевые сайты, ИИ-агентов.",
+    "newValue": "Создаесайт под ключ в LAB301. Создаем лендинги, многостраничные сайты, интернет-магазины, сайты для малого бизнеса, отраслевые сайты, ИИ-агентов.",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:28:40.124Z"
+  },
+  {
+    "slug": "",
+    "field": "metaDescription",
+    "oldValue": "Создсайт под ключ в LAB301. Создаем лендинги, многостраничные сайты, интернет-магазины, сайты для малого бизнеса, отраслевые сайты, ИИ-агентов.",
+    "newValue": "Создасайт под ключ в LAB301. Создаем лендинги, многостраничные сайты, интернет-магазины, сайты для малого бизнеса, отраслевые сайты, ИИ-агентов.",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:28:39.906Z"
+  },
+  {
+    "slug": "",
+    "field": "metaDescription",
+    "oldValue": "Созсайт под ключ в LAB301. Создаем лендинги, многостраничные сайты, интернет-магазины, сайты для малого бизнеса, отраслевые сайты, ИИ-агентов.",
+    "newValue": "Создсайт под ключ в LAB301. Создаем лендинги, многостраничные сайты, интернет-магазины, сайты для малого бизнеса, отраслевые сайты, ИИ-агентов.",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:28:39.771Z"
+  },
+  {
+    "slug": "",
+    "field": "metaDescription",
+    "oldValue": "Сосайт под ключ в LAB301. Создаем лендинги, многостраничные сайты, интернет-магазины, сайты для малого бизнеса, отраслевые сайты, ИИ-агентов.",
+    "newValue": "Созсайт под ключ в LAB301. Создаем лендинги, многостраничные сайты, интернет-магазины, сайты для малого бизнеса, отраслевые сайты, ИИ-агентов.",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:28:39.631Z"
+  },
+  {
+    "slug": "",
+    "field": "metaDescription",
+    "oldValue": "Ссайт под ключ в LAB301. Создаем лендинги, многостраничные сайты, интернет-магазины, сайты для малого бизнеса, отраслевые сайты, ИИ-агентов.",
+    "newValue": "Сосайт под ключ в LAB301. Создаем лендинги, многостраничные сайты, интернет-магазины, сайты для малого бизнеса, отраслевые сайты, ИИ-агентов.",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:28:39.232Z"
+  },
+  {
+    "slug": "",
+    "field": "metaDescription",
+    "oldValue": "Заказать сайт под ключ в LAB301. Создаем лендинги, многостраничные сайты, интернет-магазины, сайты для малого бизнеса, отраслевые сайты, ИИ-агентов.",
+    "newValue": "Ссайт под ключ в LAB301. Создаем лендинги, многостраничные сайты, интернет-магазины, сайты для малого бизнеса, отраслевые сайты, ИИ-агентов.",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:28:38.784Z"
+  },
+  {
+    "slug": "",
+    "field": "metaDescription",
+    "oldValue": "Создаем сайты",
+    "newValue": "Заказать сайт под ключ в LAB301. Создаем лендинги, многостраничные сайты, интернет-магазины, сайты для малого бизнеса, отраслевые сайты, ИИ-агентов.",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:28:31.017Z"
+  },
+  {
+    "slug": "",
+    "field": "metaDescription",
+    "oldValue": "Создаем сайт",
+    "newValue": "Создаем сайты",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:28:10.918Z"
+  },
+  {
+    "slug": "",
+    "field": "metaDescription",
+    "oldValue": "Создаем сай",
+    "newValue": "Создаем сайт",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:28:10.840Z"
+  },
+  {
+    "slug": "",
+    "field": "metaDescription",
+    "oldValue": "Создаем са",
+    "newValue": "Создаем сай",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:28:10.555Z"
+  },
+  {
+    "slug": "",
+    "field": "metaDescription",
+    "oldValue": "Создаем с",
+    "newValue": "Создаем са",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:28:09.825Z"
+  },
+  {
+    "slug": "",
+    "field": "metaDescription",
+    "oldValue": "Создаем",
+    "newValue": "Создаем с",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:28:09.619Z"
+  },
+  {
+    "slug": "",
+    "field": "metaDescription",
+    "oldValue": "Создае",
+    "newValue": "Создаем",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:28:09.276Z"
+  },
+  {
+    "slug": "",
+    "field": "metaDescription",
+    "oldValue": "Созда",
+    "newValue": "Создае",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:28:08.988Z"
+  },
+  {
+    "slug": "",
+    "field": "metaDescription",
+    "oldValue": "Созд",
+    "newValue": "Созда",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:28:08.738Z"
+  },
+  {
+    "slug": "",
+    "field": "metaDescription",
+    "oldValue": "Соз",
+    "newValue": "Созд",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:28:08.560Z"
+  },
+  {
+    "slug": "",
+    "field": "metaDescription",
+    "oldValue": "Со",
+    "newValue": "Соз",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:28:08.452Z"
+  },
+  {
+    "slug": "",
+    "field": "metaDescription",
+    "oldValue": "С",
+    "newValue": "Со",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:28:08.014Z"
+  },
+  {
+    "slug": "",
+    "field": "metaDescription",
+    "oldValue": "",
+    "newValue": "С",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:28:07.445Z"
+  },
+  {
+    "slug": "",
+    "field": "metaDescription",
+    "oldValue": "З",
+    "newValue": "",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:28:06.747Z"
+  },
+  {
+    "slug": "",
+    "field": "metaDescription",
+    "oldValue": "За",
+    "newValue": "З",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:28:06.589Z"
+  },
+  {
+    "slug": "",
+    "field": "metaDescription",
+    "oldValue": "Зак",
+    "newValue": "За",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:28:06.420Z"
+  },
+  {
+    "slug": "",
+    "field": "metaDescription",
+    "oldValue": "Зака",
+    "newValue": "Зак",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:28:06.246Z"
+  },
+  {
+    "slug": "",
+    "field": "metaDescription",
+    "oldValue": "Зак",
+    "newValue": "Зака",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:28:05.494Z"
+  },
+  {
+    "slug": "",
+    "field": "metaDescription",
+    "oldValue": "За",
+    "newValue": "Зак",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:28:04.805Z"
+  },
+  {
+    "slug": "",
+    "field": "metaDescription",
+    "oldValue": "З",
+    "newValue": "За",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:28:04.517Z"
+  },
+  {
+    "slug": "",
+    "field": "metaDescription",
+    "oldValue": "",
+    "newValue": "З",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:28:04.170Z"
+  },
+  {
+    "slug": "",
+    "field": "seoTitle",
+    "oldValue": "Заказать сайт под ключ - студия разработки сайтов LAB30",
+    "newValue": "Заказать сайт под ключ - студия разработки сайтов LAB301",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:27:56.639Z"
+  },
+  {
+    "slug": "",
+    "field": "seoTitle",
+    "oldValue": "Заказать сайт под ключ - студия разработки сайтов LAB3",
+    "newValue": "Заказать сайт под ключ - студия разработки сайтов LAB30",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:27:56.586Z"
+  },
+  {
+    "slug": "",
+    "field": "seoTitle",
+    "oldValue": "Заказать сайт под ключ - студия разработки сайтов LAB",
+    "newValue": "Заказать сайт под ключ - студия разработки сайтов LAB3",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:27:56.219Z"
+  },
+  {
+    "slug": "",
+    "field": "seoTitle",
+    "oldValue": "Заказать сайт под ключ - студия разработки сайтов LA",
+    "newValue": "Заказать сайт под ключ - студия разработки сайтов LAB",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:27:55.300Z"
+  },
+  {
+    "slug": "",
+    "field": "seoTitle",
+    "oldValue": "Заказать сайт под ключ - студия разработки сайтов L",
+    "newValue": "Заказать сайт под ключ - студия разработки сайтов LA",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:27:55.091Z"
+  },
+  {
+    "slug": "",
+    "field": "seoTitle",
+    "oldValue": "Заказать сайт под ключ - студия разработки сайтов",
+    "newValue": "Заказать сайт под ключ - студия разработки сайтов L",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:27:54.524Z"
+  },
+  {
+    "slug": "",
+    "field": "seoTitle",
+    "oldValue": "Заказать сайт под ключ - студия разработки сайтов K",
+    "newValue": "Заказать сайт под ключ - студия разработки сайтов",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:27:54.157Z"
+  },
+  {
+    "slug": "",
+    "field": "seoTitle",
+    "oldValue": "Заказать сайт под ключ - студия разработки сайтов",
+    "newValue": "Заказать сайт под ключ - студия разработки сайтов K",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:27:53.321Z"
+  },
+  {
+    "slug": "",
+    "field": "seoTitle",
+    "oldValue": "Заказать сайт под ключ - студия разработки сайто",
+    "newValue": "Заказать сайт под ключ - студия разработки сайтов",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:27:50.948Z"
+  },
+  {
+    "slug": "",
+    "field": "seoTitle",
+    "oldValue": "Заказать сайт под ключ - студия разработки сайт",
+    "newValue": "Заказать сайт под ключ - студия разработки сайто",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:27:50.759Z"
+  },
+  {
+    "slug": "",
+    "field": "seoTitle",
+    "oldValue": "Заказать сайт под ключ - студия разработки сай",
+    "newValue": "Заказать сайт под ключ - студия разработки сайт",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:27:50.667Z"
+  },
+  {
+    "slug": "",
+    "field": "seoTitle",
+    "oldValue": "Заказать сайт под ключ - студия разработки са",
+    "newValue": "Заказать сайт под ключ - студия разработки сай",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:27:50.549Z"
+  },
+  {
+    "slug": "",
+    "field": "seoTitle",
+    "oldValue": "Заказать сайт под ключ - студия разработки с",
+    "newValue": "Заказать сайт под ключ - студия разработки са",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:27:50.091Z"
+  },
+  {
+    "slug": "",
+    "field": "seoTitle",
+    "oldValue": "Заказать сайт под ключ - студия разработки",
+    "newValue": "Заказать сайт под ключ - студия разработки с",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:27:49.923Z"
+  },
+  {
+    "slug": "",
+    "field": "seoTitle",
+    "oldValue": "Заказать сайт под ключ - студия разработк",
+    "newValue": "Заказать сайт под ключ - студия разработки",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:27:49.602Z"
+  },
+  {
+    "slug": "",
+    "field": "seoTitle",
+    "oldValue": "Заказать сайт под ключ - студия разработ",
+    "newValue": "Заказать сайт под ключ - студия разработк",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:27:49.442Z"
+  },
+  {
+    "slug": "",
+    "field": "seoTitle",
+    "oldValue": "Заказать сайт под ключ - студия разрабо",
+    "newValue": "Заказать сайт под ключ - студия разработ",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:27:49.223Z"
+  },
+  {
+    "slug": "",
+    "field": "seoTitle",
+    "oldValue": "Заказать сайт под ключ - студия разраб",
+    "newValue": "Заказать сайт под ключ - студия разрабо",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:27:49.139Z"
+  },
+  {
+    "slug": "",
+    "field": "seoTitle",
+    "oldValue": "Заказать сайт под ключ - студия разра",
+    "newValue": "Заказать сайт под ключ - студия разраб",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:27:48.902Z"
+  },
+  {
+    "slug": "",
+    "field": "seoTitle",
+    "oldValue": "Заказать сайт под ключ - студия разр",
+    "newValue": "Заказать сайт под ключ - студия разра",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:27:48.635Z"
+  },
+  {
+    "slug": "",
+    "field": "seoTitle",
+    "oldValue": "Заказать сайт под ключ - студия раз",
+    "newValue": "Заказать сайт под ключ - студия разр",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:27:48.550Z"
+  },
+  {
+    "slug": "",
+    "field": "seoTitle",
+    "oldValue": "Заказать сайт под ключ - студия ра",
+    "newValue": "Заказать сайт под ключ - студия раз",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:27:48.167Z"
+  },
+  {
+    "slug": "",
+    "field": "seoTitle",
+    "oldValue": "Заказать сайт под ключ - студия р",
+    "newValue": "Заказать сайт под ключ - студия ра",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:27:47.290Z"
+  },
+  {
+    "slug": "",
+    "field": "seoTitle",
+    "oldValue": "Заказать сайт под ключ - студия",
+    "newValue": "Заказать сайт под ключ - студия р",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:27:47.166Z"
+  },
+  {
+    "slug": "",
+    "field": "seoTitle",
+    "oldValue": "Заказать сайт под ключ - студи",
+    "newValue": "Заказать сайт под ключ - студия",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:27:46.834Z"
+  },
+  {
+    "slug": "",
+    "field": "seoTitle",
+    "oldValue": "Заказать сайт под ключ - студ",
+    "newValue": "Заказать сайт под ключ - студи",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:27:46.743Z"
+  },
+  {
+    "slug": "",
+    "field": "seoTitle",
+    "oldValue": "Заказать сайт под ключ - сту",
+    "newValue": "Заказать сайт под ключ - студ",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:27:46.444Z"
+  },
+  {
+    "slug": "",
+    "field": "seoTitle",
+    "oldValue": "Заказать сайт под ключ - ст",
+    "newValue": "Заказать сайт под ключ - сту",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:27:46.031Z"
+  },
+  {
+    "slug": "",
+    "field": "seoTitle",
+    "oldValue": "Заказать сайт под ключ - с",
+    "newValue": "Заказать сайт под ключ - ст",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:27:45.828Z"
+  },
+  {
+    "slug": "",
+    "field": "seoTitle",
+    "oldValue": "Заказать сайт под ключ -",
+    "newValue": "Заказать сайт под ключ - с",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:27:45.656Z"
+  },
+  {
+    "slug": "",
+    "field": "seoTitle",
+    "oldValue": "Заказать сайт под ключ",
+    "newValue": "Заказать сайт под ключ -",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:27:42.369Z"
+  },
+  {
+    "slug": "",
+    "field": "seoTitle",
+    "oldValue": "Заказать сайт под клю",
+    "newValue": "Заказать сайт под ключ",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:27:41.291Z"
+  },
+  {
+    "slug": "",
+    "field": "seoTitle",
+    "oldValue": "Заказать сайт под кл",
+    "newValue": "Заказать сайт под клю",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:27:41.216Z"
+  },
+  {
+    "slug": "",
+    "field": "seoTitle",
+    "oldValue": "Заказать сайт под к",
+    "newValue": "Заказать сайт под кл",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:27:40.721Z"
+  },
+  {
+    "slug": "",
+    "field": "seoTitle",
+    "oldValue": "Заказать сайт под",
+    "newValue": "Заказать сайт под к",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:27:40.366Z"
+  },
+  {
+    "slug": "",
+    "field": "seoTitle",
+    "oldValue": "Заказать сайт по",
+    "newValue": "Заказать сайт под",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:27:38.716Z"
+  },
+  {
+    "slug": "",
+    "field": "seoTitle",
+    "oldValue": "Заказать сайт п",
+    "newValue": "Заказать сайт по",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:27:38.508Z"
+  },
+  {
+    "slug": "",
+    "field": "seoTitle",
+    "oldValue": "Заказать сайт",
+    "newValue": "Заказать сайт п",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:27:38.402Z"
+  },
+  {
+    "slug": "",
+    "field": "seoTitle",
+    "oldValue": "Заказать сай",
+    "newValue": "Заказать сайт",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:27:37.253Z"
+  },
+  {
+    "slug": "",
+    "field": "seoTitle",
+    "oldValue": "Заказать са",
+    "newValue": "Заказать сай",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:27:35.999Z"
+  },
+  {
+    "slug": "",
+    "field": "seoTitle",
+    "oldValue": "Заказать с",
+    "newValue": "Заказать са",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:27:35.856Z"
+  },
+  {
+    "slug": "",
+    "field": "seoTitle",
+    "oldValue": "Заказать",
+    "newValue": "Заказать с",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:27:35.763Z"
+  },
+  {
+    "slug": "",
+    "field": "seoTitle",
+    "oldValue": "Заказат",
+    "newValue": "Заказать",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:27:34.513Z"
+  },
+  {
+    "slug": "",
+    "field": "seoTitle",
+    "oldValue": "Заказа",
+    "newValue": "Заказат",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:27:34.405Z"
+  },
+  {
+    "slug": "",
+    "field": "seoTitle",
+    "oldValue": "Заказ",
+    "newValue": "Заказа",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:27:34.155Z"
+  },
+  {
+    "slug": "",
+    "field": "seoTitle",
+    "oldValue": "Зака",
+    "newValue": "Заказ",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:27:34.049Z"
+  },
+  {
+    "slug": "",
+    "field": "seoTitle",
+    "oldValue": "Зак",
+    "newValue": "Зака",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:27:33.922Z"
+  },
+  {
+    "slug": "",
+    "field": "seoTitle",
+    "oldValue": "За",
+    "newValue": "Зак",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:27:33.709Z"
+  },
+  {
+    "slug": "",
+    "field": "seoTitle",
+    "oldValue": "З",
+    "newValue": "За",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:27:33.453Z"
+  },
+  {
+    "slug": "",
+    "field": "seoTitle",
+    "oldValue": "",
+    "newValue": "З",
+    "user": "admin",
+    "createdAt": "2026-08-02T20:27:33.031Z"
+  }
+]
