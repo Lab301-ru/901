@@ -2,12 +2,10 @@
   "name": "LAB301",
   "origin": "https://lab301.ru",
   "seoDefaults": {
-    "titleTemplate": "%pageTitle% — Новости LAB301",
-    "metaDescription": "LAB301 — сайты, AI-агенты и автоматизации. Запуск за 14 дней. Михалыч на связи.",
-    "ogImage": "/og-share.png",
-    "publisherLogo": "/lab301-logo.png",
+    "titleTemplate": "%Заказать сайт под ключ% — %студия разработки сайтов LAB301%",
+    "metaDescription": "Заказать сайт под ключ в LAB301. Создаем лендинги, многостраничные сайты, интернет-магазины, сайты для малого бизнеса, отраслевые сайты, ИИ-агентов.",
+    "ogImage": "images/news/site-og-msc8s91l.webp",
     "ogType": "article",
-    "schemaType": "NewsArticle",
     "ogLocale": "ru_RU",
     "twitterCard": "summary_large_image",
     "robotsIndex": true,
@@ -41,6 +39,8 @@
         "YandexBot"
       ],
       "disallowedAiCrawlers": []
-    }
+    },
+    "publisherLogo": "/lab301-logo.png",
+    "schemaType": "NewsArticle"
   }
 }
