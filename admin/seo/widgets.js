@@ -281,7 +281,6 @@
 
   W.redirects = function (store, ctx) {
     const wrap = el('div');
-    const rules = (ctx.getRedirects ? ctx.getRedirects() : []) || [];
 
     wrap.appendChild(el('div.seo-note', {
       html: 'Сайт статический, поэтому редирект — это страница с мгновенной переадресацией ' +
