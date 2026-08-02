@@ -8,6 +8,7 @@
 <link rel="icon" href="/favicon.ico">
 <link rel="stylesheet" href="https://unpkg.com/trix@2.1.1/dist/trix.css">
 <script src="https://unpkg.com/trix@2.1.1/dist/trix.umd.min.js"></script>
+<link rel="stylesheet" href="/admin/seo/seo.css?v=1">
 <style>
 :root{
   --bg:#050505; --panel:#0d0d0d; --panel2:#141414; --text:#fff; --muted:#9a9a9a;
@@ -107,9 +108,25 @@ code{background:#1c1c1c;padding:2px 6px;border-radius:5px;font-size:12.5px}
     <div class="card">
       <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap">
         <h3 style="margin:0">Новости</h3>
-        <button id="newBtn" class="btn sm">+ Новая новость</button>
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <button id="siteSeoBtn" class="btn ghost sm">⚙ SEO сайта</button>
+          <button id="newBtn" class="btn sm">+ Новая новость</button>
+        </div>
       </div>
       <div id="list" style="margin-top:16px"><p class="muted">Загрузка…</p></div>
+    </div>
+
+    <!-- ГЛОБАЛЬНЫЕ SEO-НАСТРОЙКИ САЙТА -->
+    <div id="siteSeoCard" class="card hidden">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap">
+        <h3 style="margin:0">SEO сайта — значения по умолчанию</h3>
+        <button id="closeSiteSeo" class="btn ghost sm">Закрыть</button>
+      </div>
+      <p class="hint">Эти значения подставляются на страницы, у которых соответствующее поле не заполнено. Заполненное поле страницы всегда важнее.</p>
+      <div id="siteSeoHost" style="margin-top:18px"></div>
+      <div class="toolbar">
+        <button id="saveSiteSeo" class="btn">Сохранить настройки</button>
+      </div>
     </div>
 
     <!-- РЕДАКТОР -->
@@ -151,6 +168,9 @@ code{background:#1c1c1c;padding:2px 6px;border-radius:5px;font-size:12.5px}
       <trix-editor input="trixInput"></trix-editor>
       <div class="hint">Картинки можно перетаскивать прямо в текст — они загрузятся в репозиторий автоматически.</div>
 
+      <!-- SEO-панель: 21 вкладка, монтируется при открытии новости -->
+      <div id="seoPanelHost" style="margin-top:22px"></div>
+
       <div class="toolbar">
         <button id="saveBtn" class="btn">Опубликовать</button>
         <button id="cancelBtn" class="btn ghost">Отмена</button>
@@ -163,11 +183,41 @@ code{background:#1c1c1c;padding:2px 6px;border-radius:5px;font-size:12.5px}
 
 <div id="toast"></div>
 
+<!-- SEO-модуль: domain → application → fields → ui → widgets -->
+<script src="/admin/seo/domain.js?v=1"></script>
+<script src="/admin/seo/application.js?v=1"></script>
+<script src="/admin/seo/fields.js?v=1"></script>
+<script src="/admin/seo/ui.js?v=1"></script>
+<script src="/admin/seo/widgets.js?v=1"></script>
+
 <script>
 const OWNER='Lab301-ru', REPO='lab301.ru', BRANCH='main';
 const API=`https://api.github.com/repos/${OWNER}/${REPO}`;
 let TOKEN=localStorage.getItem('lab301_gh_token')||'';
 let editingSlug=null; // null = новая
+
+// ── состояние SEO-модуля ─────────────────────────────────────────────────
+let seoPanel=null;        // смонтированная панель
+let seoDraft=null;        // черновик SEO текущей новости (в память, коммит — при публикации)
+let siteCache=null;       // seo/site.json — глобальные настройки
+let redirectsCache=null;  // seo/redirects.json
+let historyCache=null;    // seo/changelog.json
+let postsCache=[];        // news/index.json — для проверок дублей title/description
+
+function defaultSite(){return{name:'LAB301',origin:'https://lab301.ru'};}
+
+/** Глобальные настройки сайта (с безопасным фоллбэком, если файла ещё нет). */
+function getSite(){return siteCache||defaultSite();}
+
+/** Подтянуть сопутствующие SEO-файлы. Их может не быть — это нормально. */
+async function loadSeoSidecars(){
+  try{const s=await getFile('seo/site.json');siteCache=s?JSON.parse(s.text):defaultSite();}
+  catch(e){siteCache=defaultSite();}
+  try{const r=await getFile('seo/redirects.json');redirectsCache=r?JSON.parse(r.text):[];}
+  catch(e){redirectsCache=[];}
+  try{const h=await getFile('seo/changelog.json');historyCache=h?JSON.parse(h.text):[];}
+  catch(e){historyCache=[];}
+}
 
 // ── утилиты ──────────────────────────────────────────────────────────────
 const $=id=>document.getElementById(id);
@@ -259,6 +309,8 @@ async function loadList(){
   try{
     const f=await getFile('news/index.json');
     const items=f?JSON.parse(f.text):[];
+    postsCache=items;
+    loadSeoSidecars(); // фоном: список не ждёт SEO-файлы
     if(!items.length){box.innerHTML='<p class="muted">Пока нет ни одной новости. Нажмите «+ Новая новость».</p>';return;}
     box.innerHTML='';
     items.forEach(n=>{
@@ -281,10 +333,11 @@ function resetForm(){
   editingSlug=null;$('editorTitle').textContent='Новая новость';
   fTitle.value='';fSlug.value='';fSlug.disabled=false;fDesc.value='';fTags.value='';fCover.value='';
   fDate.value=todayISO();$('coverPrev').style.display='none';setBody('');updateSlugPreview();
+  seoDraft={};
 }
 async function openEditor(slug){
   showEditor();
-  if(!slug){resetForm();return;}
+  if(!slug){resetForm();mountSeoPanel();return;}
   toast('Загрузка новости…');
   try{
     const f=await getFile('news/data/'+slug+'.json');
@@ -296,11 +349,81 @@ async function openEditor(slug){
     fCover.value=n.cover||'';fDate.value=n.date||todayISO();
     if(n.cover){const p=$('coverPrev');p.src='/'+n.cover;p.style.display='block';}else{$('coverPrev').style.display='none';}
     setBody(n.bodyHtml||'');updateSlugPreview();
+    seoDraft=n.seo?JSON.parse(JSON.stringify(n.seo)):{};
+    mountSeoPanel();
   }catch(e){toast('Ошибка: '+e.message,true);}
 }
 function showEditor(){$('editor').classList.remove('hidden');$('editor').scrollIntoView({behavior:'smooth'});}
 function hideEditor(){$('editor').classList.add('hidden');}
 function updateSlugPreview(){$('slugPreview').textContent='/news/'+(fSlug.value||'…')+'.html';}
+
+// ── SEO-панель ───────────────────────────────────────────────────────────
+/** Собрать объект новости из формы — его получает SEO-панель для превью и анализа. */
+function buildPost(){
+  const title=fTitle.value.trim();
+  const slug=editingSlug||slugify(fSlug.value||title);
+  return {
+    slug,title,
+    description:fDesc.value.trim(),
+    cover:fCover.value.trim(),
+    date:fDate.value||todayISO(),
+    dateModified:todayISO(),
+    author:'LAB301',
+    tags:fTags.value.split(',').map(s=>s.trim()).filter(Boolean),
+    bodyHtml:$('trixInput').value||'',
+    seo:seoDraft||{}
+  };
+}
+
+/**
+ * Смонтировать SEO-панель для текущей новости.
+ * Панель правит черновик в памяти: на GitHub он уезжает одним коммитом
+ * при нажатии «Опубликовать», отдельного коммита на каждое поле нет.
+ */
+function mountSeoPanel(){
+  const host=$('seoPanelHost');if(!host)return;
+  if(!window.SeoUI){host.innerHTML='<p class="muted">SEO-модуль не загрузился</p>';return;}
+  unmountSeoPanel();
+  const post=buildPost();
+  seoPanel=window.SeoUI.mount(host,{
+    post, site:getSite(),
+    getAllPosts:()=>postsCache||[],
+    uploadImage:file=>uploadImage(file,fTitle.value||'seo'),
+    getRedirects:()=>redirectsCache||[],
+    getHistory:()=>historyCache||[],
+    onSaveRedirects:rules=>{redirectsCache=rules;toast('Редиректы применятся при публикации');},
+    // Каждое изменение поля — запись в историю (что было / что стало)
+    onFieldChange:(field,oldValue,newValue)=>{
+      historyCache=historyCache||[];
+      historyCache.unshift({
+        slug:post.slug, field, oldValue, newValue,
+        user:'admin', createdAt:new Date().toISOString()
+      });
+    },
+    onSave:seo=>{seoDraft=JSON.parse(JSON.stringify(seo));}
+  });
+}
+function unmountSeoPanel(){
+  if(seoPanel){try{seoPanel.destroy();}catch(e){}seoPanel=null;}
+  const h=$('seoPanelHost');if(h)h.innerHTML='';
+}
+
+/** Записать сопутствующие SEO-файлы. Страницы и robots.txt пересоберёт GitHub Action. */
+async function writeSeoSidecars(message){
+  if(redirectsCache && redirectsCache.length){
+    const f=await getFile('seo/redirects.json');
+    await putFile('seo/redirects.json',strToB64(JSON.stringify(redirectsCache,null,2)+'\n'),
+      message,f?f.sha:null);
+  }
+  if(historyCache && historyCache.length){
+    // Ограничиваем файл, чтобы он не рос бесконечно
+    const merged=historyCache.slice(0,2000);
+    const f=await getFile('seo/changelog.json');
+    await putFile('seo/changelog.json',strToB64(JSON.stringify(merged,null,2)+'\n'),
+      message,f?f.sha:null);
+    historyCache=merged;
+  }
+}
 
 // ── сохранить ────────────────────────────────────────────────────────────
 async function save(){
@@ -321,12 +444,15 @@ async function save(){
       updated:todayISO(),
       author:'LAB301',
       tags:fTags.value.split(',').map(s=>s.trim()).filter(Boolean),
-      bodyHtml:sanitize($('trixInput').value)
+      bodyHtml:sanitize($('trixInput').value),
+      seo:seoDraft||{}
     };
+    const message=(editingSlug?'feat(news): update ':'feat(news): publish ')+slug;
     await putFile(path,strToB64(JSON.stringify(data,null,2)+'\n'),
-      (editingSlug?'feat(news): update ':'feat(news): publish ')+slug,existing?existing.sha:null);
+      message,existing?existing.sha:null);
+    await writeSeoSidecars(message);
     toast('Опубликовано! Страница соберётся за ~1 минуту.');
-    hideEditor();setTimeout(loadList,1200);
+    hideEditor();unmountSeoPanel();setTimeout(loadList,1200);
   }catch(e){toast(e.message,true);}
   finally{btn.disabled=false;btn.innerHTML=old;}
 }
@@ -375,9 +501,61 @@ $('connectBtn').onclick=async()=>{
 };
 $('logoutBtn').onclick=()=>{localStorage.removeItem('lab301_gh_token');location.reload();};
 $('newBtn').onclick=()=>openEditor(null);
-$('closeEditor').onclick=hideEditor;
-$('cancelBtn').onclick=hideEditor;
+$('closeEditor').onclick=()=>{hideEditor();unmountSeoPanel();};
+$('cancelBtn').onclick=()=>{hideEditor();unmountSeoPanel();};
 $('saveBtn').onclick=save;
+
+// ── глобальные SEO-настройки сайта ───────────────────────────────────────
+let siteSeoDraft=null;
+
+$('siteSeoBtn').onclick=async()=>{
+  const card=$('siteSeoCard');
+  if(!card.classList.contains('hidden')){card.classList.add('hidden');return;}
+  if(!siteCache)await loadSeoSidecars();
+  card.classList.remove('hidden');renderSiteSeo();card.scrollIntoView({behavior:'smooth'});
+};
+$('closeSiteSeo').onclick=()=>$('siteSeoCard').classList.add('hidden');
+
+function renderSiteSeo(){
+  const host=$('siteSeoHost');
+  if(!window.SeoUI){host.innerHTML='<p class="muted">SEO-модуль не загрузился</p>';return;}
+  const U=window.SeoUI, D=window.SeoDomain, F=window.SeoFields;
+  siteSeoDraft=Object.assign({},D.emptySiteDefaults(),getSite().seoDefaults||{});
+
+  // Лёгкий «стор» поверх черновика глобальных настроек
+  const store={
+    get:p=>F.getPath(siteSeoDraft,p),
+    set:(p,v)=>F.setPath(siteSeoDraft,p,v),
+    state:{site:getSite()}
+  };
+  host.innerHTML='';
+  const panel=document.createElement('div');
+  panel.className='seo-panel';
+  F.siteDefaultsSections.forEach((sec,i)=>{
+    const inner=document.createElement('div');
+    (sec.fields||[]).forEach(f=>inner.appendChild(
+      U.renderField(f,store,{uploadImage:file=>uploadImage(file,'site-og')})));
+    panel.appendChild(U.collapsibleSection('site:'+i,sec.title,inner,sec.collapsed));
+  });
+  host.appendChild(panel);
+}
+
+$('saveSiteSeo').onclick=async()=>{
+  if(!siteSeoDraft){toast('Нечего сохранять',true);return;}
+  const btn=$('saveSiteSeo');btn.disabled=true;const old=btn.textContent;
+  btn.innerHTML='<span class="spin"></span> Сохраняю…';
+  try{
+    const site=Object.assign({},getSite(),{seoDefaults:siteSeoDraft});
+    const f=await getFile('seo/site.json');
+    await putFile('seo/site.json',strToB64(JSON.stringify(site,null,2)+'\n'),
+      'seo: обновление глобальных настроек',f?f.sha:null);
+    siteCache=site;
+    // Глобальные значения влияют на все страницы — их пересоберёт GitHub Action.
+    toast('✅ Сохранено. Страницы и robots.txt пересоберутся за ~1 минуту.');
+    $('siteSeoCard').classList.add('hidden');
+  }catch(e){toast(e.message,true);}
+  finally{btn.disabled=false;btn.textContent=old;}
+};
 
 // автологин, если токен уже сохранён
 (async()=>{if(TOKEN){try{await connect(TOKEN);enterApp();}catch(e){localStorage.removeItem('lab301_gh_token');}}})();
