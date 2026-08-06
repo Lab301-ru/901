@@ -32,19 +32,39 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22'
 
-      - name: Generate news pages
-        run: node scripts/build-news.mjs
-
-      - name: Commit generated pages
+      # Сборка и коммит — в одном шаге с повторами.
+      # Пока идёт сборка, из админки может прилететь следующая новость;
+      # тогда push отклоняется («fetch first») и страницы теряются.
+      # На такой случай подтягиваем свежий main и пересобираем: генератор
+      # детерминирован и полностью выводится из news/data, поэтому
+      # reset --hard безопасен — свежие данные просто попадут в сборку.
+      - name: Generate and commit news pages
         run: |
           git config user.name  "lab301-bot"
           git config user.email "bot@lab301.ru"
-          git add news.html news/ sitemap.xml
-          if git diff --cached --quiet; then
-            echo "Изменений нет — пропускаю коммит."
-          else
+
+          for attempt in 1 2 3 4 5; do
+            node scripts/build-news.mjs
+
+            git add -A
+            if git diff --cached --quiet; then
+              echo "Изменений нет — пропускаю коммит."
+              exit 0
+            fi
+
             git commit -m "chore(news): regenerate news pages [skip ci]"
-            git push
-          fi
+            if git push; then
+              echo "Страницы опубликованы (попытка $attempt)."
+              exit 0
+            fi
+
+            echo "Push отклонён — в main появились новые данные. Пересобираю (попытка $attempt)."
+            git fetch origin main
+            git reset --hard origin/main
+            sleep $((attempt * 5))
+          done
+
+          echo "::error::Не удалось запушить страницы за 5 попыток."
+          exit 1
