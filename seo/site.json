@@ -2,7 +2,7 @@
   "name": "LAB301",
   "origin": "https://lab301.ru",
   "seoDefaults": {
-    "titleTemplate": "%Заказать сайт под ключ% — %студия разработки сайтов LAB301%",
+    "titleTemplate": "%pageTitle% — Новости LAB301",
     "metaDescription": "Заказать сайт под ключ в LAB301. Создаем лендинги, многостраничные сайты, интернет-магазины, сайты для малого бизнеса, отраслевые сайты, ИИ-агентов.",
     "ogImage": "images/news/site-og-msc8s91l.webp",
     "ogType": "article",

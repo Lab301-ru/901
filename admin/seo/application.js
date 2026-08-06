@@ -133,9 +133,16 @@
     };
   }
 
-  /** Подставить %pageTitle% / %siteName% в шаблон заголовка. */
+  /**
+   * Подставить %pageTitle% / %siteName% в шаблон заголовка.
+   *
+   * Защита от типичной ошибки: если в шаблоне нет метки %pageTitle%
+   * (например, метки заменили своим текстом), шаблон игнорируется и
+   * берётся заголовок страницы. Иначе ВСЕ страницы получили бы один и
+   * тот же <title> — это грубая SEO-ошибка, дубли в выдаче.
+   */
   function applyTitleTemplate(tpl, pageTitle, siteName) {
-    if (!tpl) return pageTitle;
+    if (!tpl || tpl.indexOf('%pageTitle%') === -1) return pageTitle;
     return tpl
       .replace(/%pageTitle%/g, pageTitle)
       .replace(/%siteName%/g, siteName)
